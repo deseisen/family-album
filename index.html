@@ -976,17 +976,17 @@ function makeHoles(container, count=6) {
 // ✏️ 여기에 사진 경로를 추가하세요 (src 배열)
 (function(){
   const heroSlides = [
-    { src:"https://drive.google.com/uc?export=view&id=1owbAldXKhes5Z_SlERHN2SzHggKxqT5c", label:"Family · No.001" },
-    { src:"https://drive.google.com/uc?export=view&id=1micAmdjc-JVOfeAPvMD8QbiicPLNhlnH", label:"Family · No.002" },
-    { src:"https://drive.google.com/uc?export=view&id=1EVmx1IPRZZTvoPKga3liNi0iUoy9l9zV", label:"Family · No.003" },
-    { src:"https://drive.google.com/uc?export=view&id=1JCTd7bzNV4CKVdJyLq6oh4sRhLBmZQ5z", label:"Family · No.004" },
-    { src:"https://drive.google.com/uc?export=view&id=1EMcuB3jcsGjgH7gj2MZVPOmoA2iY9Q7H", label:"Family · No.005" },
-    { src:"https://drive.google.com/uc?export=view&id=1RXzFnEGamoJq2ehW8-Mp-g9m9xf9dV3l", label:"Family · No.006" },
-    { src:"https://drive.google.com/uc?export=view&id=1LclgE25wzdqQ_y6ThLsoi5w3uujWS4VW", label:"Family · No.007" },
-    { src:"https://drive.google.com/uc?export=view&id=1o1PubW9w_Gt98a9DENjC1cyTKRRbEmCA", label:"Family · No.008" },
-    { src:"https://drive.google.com/uc?export=view&id=1NcFrhtMKmLs6rKAt8_fZryCYugMm7BX3", label:"Family · No.009" },
-    { src:"https://drive.google.com/uc?export=view&id=1UPVo_EtE8PrCrSeZDwIP2xAfWqIq6Sv8", label:"Family · No.010" },
-    { src:"https://drive.google.com/uc?export=view&id=14nvT_QQvxHfwiwBTS9XEm2fmOmMTy-xb", label:"Family · No.011" },
+    { src:"https://drive.google.com/thumbnail?id=1owbAldXKhes5Z_SlERHN2SzHggKxqT5c&sz=w1000", label:"Family · No.001" },
+    { src:"https://drive.google.com/thumbnail?id=1micAmdjc-JVOfeAPvMD8QbiicPLNhlnH&sz=w1000", label:"Family · No.002" },
+    { src:"https://drive.google.com/thumbnail?id=1EVmx1IPRZZTvoPKga3liNi0iUoy9l9zV&sz=w1000", label:"Family · No.003" },
+    { src:"https://drive.google.com/thumbnail?id=1JCTd7bzNV4CKVdJyLq6oh4sRhLBmZQ5z&sz=w1000", label:"Family · No.004" },
+    { src:"https://drive.google.com/thumbnail?id=1EMcuB3jcsGjgH7gj2MZVPOmoA2iY9Q7H&sz=w1000", label:"Family · No.005" },
+    { src:"https://drive.google.com/thumbnail?id=1RXzFnEGamoJq2ehW8-Mp-g9m9xf9dV3l&sz=w1000", label:"Family · No.006" },
+    { src:"https://drive.google.com/thumbnail?id=1LclgE25wzdqQ_y6ThLsoi5w3uujWS4VW&sz=w1000", label:"Family · No.007" },
+    { src:"https://drive.google.com/thumbnail?id=1o1PubW9w_Gt98a9DENjC1cyTKRRbEmCA&sz=w1000", label:"Family · No.008" },
+    { src:"https://drive.google.com/thumbnail?id=1NcFrhtMKmLs6rKAt8_fZryCYugMm7BX3&sz=w1000", label:"Family · No.009" },
+    { src:"https://drive.google.com/thumbnail?id=1UPVo_EtE8PrCrSeZDwIP2xAfWqIq6Sv8&sz=w1000", label:"Family · No.010" },
+    { src:"https://drive.google.com/thumbnail?id=14nvT_QQvxHfwiwBTS9XEm2fmOmMTy-xb&sz=w1000", label:"Family · No.011" },
   ];
 
   const slot   = document.getElementById('heroPhotoSlot');
@@ -1054,6 +1054,14 @@ function rebuildFlat(){
 function buildYearNav(){
   const nav=document.getElementById('yearNav');
   nav.innerHTML='';
+  const agBtn = document.createElement('a');
+  agBtn.href = "https://sites.google.com/d/1CqfQP9yVsP8QXIvlucOpaSkwKZ37NkEc/p/1shaHqJ4lrGQwWYcKUc447RxUObxz4Qyb/edit";
+  agBtn.target = "_blank";
+  agBtn.className = "year-btn year-nav-all";
+  agBtn.style.cssText = "color:var(--brown);font-weight:500;text-decoration:none;border-right:1px solid var(--border);margin-right:6px;padding-right:20px;";
+  agBtn.textContent = "Alles Gute";
+  nav.appendChild(agBtn);
+
   const allBtn=document.createElement('button');
   allBtn.className='year-btn year-nav-all active';
   allBtn.textContent='All';
