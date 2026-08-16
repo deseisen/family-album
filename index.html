@@ -383,8 +383,7 @@ body > * { position:relative; z-index:1; }
   border-color: var(--brown);
 }
 
-/* ── ALBUM CARD 간격 ── */
-.year-albums { display:flex; flex-direction:column; gap:10px; }
+.film-divider.hidden { display:none !important; }
 
 /* ── ALBUM ── */
 .album-header {
@@ -1069,13 +1068,12 @@ function filterYear(year,btn){
   document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
 
-  // 연도 섹션 필터
   document.querySelectorAll('.year-section').forEach(sec=>{
     sec.classList.toggle('hidden', year!=='all' && sec.dataset.year!==year);
   });
 
-  // 필름 구분선도 같이 숨기기
-  document.querySelectorAll('.film-divider').forEach((div,i)=>{
+  // 필름 구분선: 전체 보기일 때만 표시
+  document.querySelectorAll('.film-divider').forEach(div=>{
     if(year==='all'){
       div.classList.remove('hidden');
     } else {
@@ -1114,6 +1112,7 @@ function buildContent(){
       const rh=document.createElement('div'); rh.className='film-div-holes';
       for(let i=0;i<2;i++){const h=document.createElement('div');h.className='fdhole';rh.appendChild(h);}
       inner.appendChild(lh); inner.appendChild(frames); inner.appendChild(rh);
+      div.dataset.beforeYear = yd.year;
       div.appendChild(inner);
       main.appendChild(div);
     }
