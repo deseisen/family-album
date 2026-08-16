@@ -1068,9 +1068,21 @@ function filterYear(year,btn){
   activeYear=year;
   document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+
+  // 연도 섹션 필터
   document.querySelectorAll('.year-section').forEach(sec=>{
     sec.classList.toggle('hidden', year!=='all' && sec.dataset.year!==year);
   });
+
+  // 필름 구분선도 같이 숨기기
+  document.querySelectorAll('.film-divider').forEach((div,i)=>{
+    if(year==='all'){
+      div.classList.remove('hidden');
+    } else {
+      div.classList.add('hidden');
+    }
+  });
+
   if(year!=='all'){
     const t=document.querySelector(`.year-section[data-year="${year}"]`);
     if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
