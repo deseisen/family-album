@@ -166,7 +166,7 @@ body > * { position:relative; z-index:1; }
   position:relative;
   z-index:2;
   flex-shrink:0;
-  width: clamp(240px, 28vw, 380px);
+  width: clamp(320px, 38vw, 520px);
 }
 /* 필름 전체 컨테이너 */
 .hero-film {
@@ -723,7 +723,7 @@ body > * { position:relative; z-index:1; }
 @media(max-width:720px){
   .film-rail { display:none; }
   .hero { padding:36px 20px; grid-template-columns:1fr; gap:28px; }
-  .hero-photo-wrap { width:100%; max-width:320px; margin:0 auto; }
+  .hero-photo-wrap { width:100%; max-width:420px; margin:0 auto; }
   .hero-film-strip { width:120px; }
   .film-frames { display:none; }
   .year-nav-wrap { margin-left:0; }
@@ -976,25 +976,76 @@ function makeHoles(container, count=6) {
 // ── 히어로 슬라이드쇼 ──
 // ✏️ 여기에 사진 경로를 추가하세요 (src 배열)
 (function(){
-  const heroSlides = [
-    { src:"https://drive.google.com/thumbnail?id=1owbAldXKhes5Z_SlERHN2SzHggKxqT5c&sz=w1000", label:"Family · No.001" },
-    { src:"https://drive.google.com/thumbnail?id=1micAmdjc-JVOfeAPvMD8QbiicPLNhlnH&sz=w1000", label:"Family · No.002" },
-    { src:"https://drive.google.com/thumbnail?id=1EVmx1IPRZZTvoPKga3liNi0iUoy9l9zV&sz=w1000", label:"Family · No.003" },
-    { src:"https://drive.google.com/thumbnail?id=1JCTd7bzNV4CKVdJyLq6oh4sRhLBmZQ5z&sz=w1000", label:"Family · No.004" },
-    { src:"https://drive.google.com/thumbnail?id=1EMcuB3jcsGjgH7gj2MZVPOmoA2iY9Q7H&sz=w1000", label:"Family · No.005" },
-    { src:"https://drive.google.com/thumbnail?id=1RXzFnEGamoJq2ehW8-Mp-g9m9xf9dV3l&sz=w1000", label:"Family · No.006" },
-    { src:"https://drive.google.com/thumbnail?id=1LclgE25wzdqQ_y6ThLsoi5w3uujWS4VW&sz=w1000", label:"Family · No.007" },
-    { src:"https://drive.google.com/thumbnail?id=1o1PubW9w_Gt98a9DENjC1cyTKRRbEmCA&sz=w1000", label:"Family · No.008" },
-    { src:"https://drive.google.com/thumbnail?id=1NcFrhtMKmLs6rKAt8_fZryCYugMm7BX3&sz=w1000", label:"Family · No.009" },
-    { src:"https://drive.google.com/thumbnail?id=1UPVo_EtE8PrCrSeZDwIP2xAfWqIq6Sv8&sz=w1000", label:"Family · No.010" },
-    { src:"https://drive.google.com/thumbnail?id=14nvT_QQvxHfwiwBTS9XEm2fmOmMTy-xb&sz=w1000", label:"Family · No.011" },
+        const heroSlides = [
+    { src:"1.jpg", label:"Family · No.001" },
+    { src:"2.jpg", label:"Family · No.002" },
+    { src:"3.jpg", label:"Family · No.003" },
+    { src:"4.jpg", label:"Family · No.004" },
+    { src:"5.jpg", label:"Family · No.005" },
+    { src:"6.jpg", label:"Family · No.006" },
+    { src:"7.jpg", label:"Family · No.007" },
+    { src:"8.jpg", label:"Family · No.008" },
+    { src:"9.jpg", label:"Family · No.009" },
+    { src:"10.jpg", label:"Family · No.010" },
+    { src:"11.jpg", label:"Family · No.011" },
+    { src:"12.jpg", label:"Family · No.012" },
+    { src:"13.jpg", label:"Family · No.013" },
+    { src:"14.jpg", label:"Family · No.014" },
+    { src:"15.jpg", label:"Family · No.015" },
+    { src:"16.jpg", label:"Family · No.016" },
+    { src:"17.jpg", label:"Family · No.017" },
+    { src:"18.jpg", label:"Family · No.018" },
+    { src:"19.jpg", label:"Family · No.019" },
+    { src:"20.jpg", label:"Family · No.020" },
+    { src:"21.jpg", label:"Family · No.021" },
+    { src:"22.jpg", label:"Family · No.022" },
+    { src:"23.jpg", label:"Family · No.023" },
+    { src:"24.jpg", label:"Family · No.024" },
+    { src:"25.jpg", label:"Family · No.025" },
+    { src:"26.jpg", label:"Family · No.026" },
+    { src:"27.jpg", label:"Family · No.027" },
+    { src:"28.jpg", label:"Family · No.028" },
+    { src:"29.jpg", label:"Family · No.029" },
+    { src:"30.jpg", label:"Family · No.030" },
+    { src:"31.jpg", label:"Family · No.031" },
+    { src:"32.jpg", label:"Family · No.032" },
+    { src:"33.jpg", label:"Family · No.033" },
+    { src:"34.jpg", label:"Family · No.034" },
+    { src:"35.jpg", label:"Family · No.035" },
+    { src:"36.jpg", label:"Family · No.036" },
+    { src:"37.jpg", label:"Family · No.037" },
+    { src:"38.jpg", label:"Family · No.038" },
+    { src:"39.jpg", label:"Family · No.039" },
+    { src:"40.jpg", label:"Family · No.040" },
+    { src:"41.jpg", label:"Family · No.041" },
+    { src:"42.jpg", label:"Family · No.042" },
+    { src:"43.jpg", label:"Family · No.043" },
+    { src:"44.jpg", label:"Family · No.044" },
+    { src:"45.jpg", label:"Family · No.045" },
+    { src:"46.jpg", label:"Family · No.046" },
+    { src:"47.jpg", label:"Family · No.047" },
+    { src:"48.jpg", label:"Family · No.048" },
+    { src:"49.jpg", label:"Family · No.049" },
+    { src:"50.jpg", label:"Family · No.050" },
+    { src:"51.jpg", label:"Family · No.051" },
+    { src:"52.jpg", label:"Family · No.052" },
+    { src:"53.jpg", label:"Family · No.053" },
+    { src:"54.jpg", label:"Family · No.054" },
+    { src:"55.jpg", label:"Family · No.055" },
+    { src:"56.jpg", label:"Family · No.056" },
+    { src:"57.jpg", label:"Family · No.057" },
+    { src:"58.jpg", label:"Family · No.058" },
+    { src:"59.jpg", label:"Family · No.059" },
+    { src:"60.jpg", label:"Family · No.060" },
+    { src:"61.jpg", label:"Family · No.061" },
+    { src:"62.jpg", label:"Family · No.062" },
   ];
 
   const slot   = document.getElementById('heroPhotoSlot');
   const dots   = document.getElementById('heroSlideDots');
   const numEl  = document.getElementById('heroFilmNumber');
   const empty  = document.getElementById('heroPhotoEmpty');
-  const INTERVAL = 4000;
+  const INTERVAL = 3000;
 
   if(!heroSlides.length) return; // 사진 없으면 빈 상태 유지
   empty.style.display='none';
