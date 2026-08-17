@@ -6,1351 +6,369 @@
 <title>박지형 · 박주형 · 채유리 · 박철의 — 우리의 시간</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-:root {
-  --bg:        #f4f0e8;
-  --bg2:       #ede8de;
-  --paper:     #faf7f2;
-  --border:    rgba(80,60,30,.10);
-  --border2:   rgba(80,60,30,.18);
-  --text:      #1e1a14;
-  --text-dim:  rgba(30,26,20,.52);
-  --text-muted:rgba(30,26,20,.28);
-  --brown:     #6b4f2e;
-  --brown-dim: rgba(107,79,46,.12);
-  --red:       #c0392b;
-  --film-hole: #1e1a14;
-  --sprocket:  #f4f0e8;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fafafa; --card:#fff; --line:#ececec;
+  --text:#111; --dim:#888; --muted:#bbb;
+  --gold:#8b7355; --sage:#5f8a76;
 }
-
-html { scroll-behavior:smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* ── 필름 스프로켓 사이드바 (데스크탑) ── */
-.film-rail {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px;
-  height: 100vh;
-  background: var(--film-hole);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px 0;
-  gap: 14px;
-  z-index: 300;
-  overflow: hidden;
-}
-.film-rail::after {
-  content:'';
-  position:absolute;
-  right:0; top:0;
-  width:3px; height:100%;
-  background: linear-gradient(to bottom, #3a3028, #2a2018, #3a3028);
-}
-.sprocket {
-  width: 18px; height: 14px;
-  border-radius: 3px;
-  background: var(--sprocket);
-  opacity: .18;
-  flex-shrink: 0;
-}
-
-/* ── BODY 배경 텍스처 ── */
-body::before {
-  content:'';
-  position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(139,100,60,.028) 24px, rgba(139,100,60,.028) 25px),
-    repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(139,100,60,.018) 24px, rgba(139,100,60,.018) 25px);
-  opacity:1;
-}
-body > * { position:relative; z-index:1; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden}
 
 /* ── HERO ── */
-.hero {
-  position: relative;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 48px;
-  padding: 48px 80px 48px 100px;
-  overflow: hidden;
-  background: transparent;
-}
-.hero::after {
-  content:'';
-  position:absolute;
-  inset:0; z-index:0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(139,100,60,.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 80%, rgba(180,140,80,.04) 0%, transparent 50%);
-  pointer-events:none;
-}
+.hero{position:relative;height:min(72vh,520px);overflow:hidden}
+.hero-slides{position:absolute;inset:0}
+.hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center}
+.hslide.on{opacity:1}
+.hero::after{content:'';position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to right,rgba(8,10,12,.88) 0%,rgba(8,10,12,.62) 42%,rgba(8,10,12,.18) 72%,rgba(8,10,12,.35) 100%)}
+.hero-in{position:relative;z-index:4;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,5vw,64px);max-width:640px}
+.eb{font-size:clamp(8px,1vw,9.5px);font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#d4b483;margin-bottom:18px}
+.h1{font-family:'Libre Baskerville',serif;font-size:clamp(1.9rem,4.4vw,3.2rem);font-weight:400;line-height:1.08;color:#fff;letter-spacing:-.025em}
+.h1 em{font-style:italic;color:#d4b483}
+.de{font-size:clamp(8px,1vw,9.5px);color:#9dc4b0;margin-top:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500}
+.nm{margin-top:22px;display:flex;flex-wrap:wrap;font-size:clamp(9px,1.1vw,10.5px);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62);font-weight:500}
+.nm span+span::before{content:'·';margin:0 9px;color:rgba(255,255,255,.3)}
+.rg{margin-top:20px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.13);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:9px 16px;border-radius:100px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.88);font-weight:500;width:fit-content}
+.rd{width:5px;height:5px;border-radius:50%;background:#d4b483}
+/* 히어로 도트 */
+.hdots{position:absolute;bottom:22px;left:clamp(24px,5vw,64px);z-index:5;display:flex;gap:5px}
+.hd{width:16px;height:2px;background:rgba(255,255,255,.3);border-radius:2px;transition:all .3s;cursor:pointer}
+.hd.on{background:#fff;width:28px}
 
-.hero-content { position:relative; z-index:2; }
-.hero-eyebrow {
-  font-size:.65rem;
-  font-weight:500;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color: var(--brown);
-  margin-bottom:18px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.hero-eyebrow::before {
-  content:'';
-  width:36px; height:1px;
-  background: var(--brown);
-  opacity:.5;
-  display:inline-block;
-}
-.hero h1 {
-  font-family:'Libre Baskerville',serif;
-  font-size: clamp(2rem,3.8vw,3.8rem);
-  font-weight:400;
-  line-height:1.1;
-  letter-spacing:-.02em;
-  color: var(--text);
-}
-.hero h1 em {
-  font-style:italic;
-  color: var(--brown);
-}
-.hero-names {
-  margin-top:14px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:0;
-  font-size:.72rem;
-  font-weight:400;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color: var(--text-dim);
-}
-.hero-names span { display:flex; align-items:center; }
-.hero-names span + span::before { content:'·'; margin:0 8px; opacity:.4; }
-.hero-range {
-  margin-top:18px;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  border:1px solid var(--border2);
-  padding:8px 16px;
-  font-size:.66rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color: var(--text-dim);
-}
-.hero-range-dot {
-  width:5px; height:5px;
-  border-radius:50%;
-  background: var(--brown);
-  opacity:.6;
-}
+/* 우측 필름 스트립 */
+.strip{position:absolute;right:0;top:0;bottom:0;width:clamp(120px,17vw,210px);background:#14110e;z-index:3;display:flex;overflow:hidden}
+.sh{position:absolute;top:0;bottom:0;width:15px;display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:8px 0;z-index:2}
+.sh.l{left:0}.sh.r{right:0}
+.sf{width:8px;height:6px;border-radius:1px;background:#e8e3d8;opacity:.22;flex-shrink:0}
+.sframes{margin:0 15px;flex:1;display:flex;flex-direction:column;gap:2px}
+.sfr{flex:1;min-height:0;background-size:cover;background-position:center;border:1px solid rgba(255,255,255,.05);filter:brightness(.72) saturate(.9)}
+@media(max-width:760px){.strip{display:none}.hero::after{background:linear-gradient(to top,rgba(8,10,12,.9),rgba(8,10,12,.5))}}
 
-/* ── HERO 우측 — 가족사진 필름 프레임 ── */
-.hero-photo-wrap {
-  position:relative;
-  z-index:2;
-  flex-shrink:0;
-  width: clamp(320px, 38vw, 520px);
-}
-/* 필름 전체 컨테이너 */
-.hero-film {
-  background: #1a1610;
-  padding: 22px 22px;
-  position:relative;
-  box-shadow: 4px 6px 24px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
-}
-/* 필름 구멍 열 — 좌우 */
-.hero-film-holes {
-  position:absolute;
-  top:0; bottom:0;
-  width:22px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-around;
-  padding:8px 0;
-}
-.hero-film-holes.left  { left:0; }
-.hero-film-holes.right { right:0; }
-/* 필름 구멍 열 — 상하 */
-.hero-film-holes-top,
-.hero-film-holes-bottom {
-  position:absolute;
-  left:22px; right:22px;
-  height:22px;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:space-around;
-  padding:0 8px;
-}
-.hero-film-holes-top    { top:0; }
-.hero-film-holes-bottom { bottom:0; }
-.fhole {
-  width:14px; height:10px;
-  border-radius:2px;
-  background: #f4f0e8;
-  opacity:.15;
-  flex-shrink:0;
-}
-.fhole-h {
-  width:10px; height:14px;
-  border-radius:2px;
-  background: #f4f0e8;
-  opacity:.15;
-  flex-shrink:0;
-}
-/* 사진 슬롯 — 자동 슬라이드쇼 */
-.hero-photo-slot {
-  position:relative;
-  aspect-ratio: 4/3;
-  background: #2a2018;
-  overflow:hidden;
-}
-.hero-photo-slide {
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  display:block;
-  filter:sepia(.1) contrast(1.02);
-  opacity:0;
-  transition: opacity .9s ease;
-  transform: scale(1.04);
-  animation: none;
-}
-.hero-photo-slide.active {
-  opacity:1;
-  transform: scale(1.0);
-  transition: opacity .9s ease, transform 5s ease;
-}
-/* 사진 없을 때 */
-.hero-photo-empty {
-  position:absolute; inset:0;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  gap:10px;
-  color:rgba(255,255,255,.2);
-  font-size:.65rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-.hero-photo-empty-icon { font-size:2.2rem; opacity:.35; }
-/* 하단 도트 인디케이터 */
-.hero-slide-dots {
-  position:absolute; bottom:10px; left:0; right:0;
-  display:flex; justify-content:center; gap:5px; z-index:3;
-}
-.hero-slide-dot {
-  width:16px; height:2px;
-  background:rgba(255,255,255,.28);
-  border-radius:2px;
-  transition:background .3s, width .3s;
-  cursor:pointer;
-}
-.hero-slide-dot.active { background:rgba(255,255,255,.8); width:26px; }
-/* 필름 번호 */
-.hero-film-number {
-  text-align:center;
-  font-family:'Libre Baskerville',serif;
-  font-style:italic;
-  font-size:.65rem;
-  color:rgba(255,255,255,.18);
-  margin-top:6px;
-  letter-spacing:.08em;
-}
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:0 clamp(18px,5vw,64px);display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.ag{font-size:10.5px;font-weight:600;letter-spacing:.12em;color:var(--gold);padding:16px 18px 16px 0;margin-right:8px;border-right:1px solid var(--line);white-space:nowrap;text-decoration:none;flex-shrink:0}
+.tb{background:none;border:none;font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;padding:16px 13px;color:var(--muted);position:relative;white-space:nowrap;cursor:pointer;flex-shrink:0}
+.tb:hover{color:var(--dim)}
+.tb.on{color:var(--text)}
+.tb.on::after{content:'';position:absolute;bottom:0;left:13px;right:13px;height:2px;background:var(--gold);border-radius:2px 2px 0 0}
 
-/* ── 독일어 부제 ── */
-.hero-subtitle-de {
-  font-family:'Outfit',sans-serif;
-  font-style:normal;
-  font-size:clamp(.7rem,1.1vw,.9rem);
-  color: #7a9e8e;
-  opacity:.85;
-  margin-top:8px;
-  letter-spacing:.18em;
-  font-weight:300;
-  text-transform:uppercase;
-  display:block;
-}
+/* ── BODY ── */
+.body{padding:clamp(28px,5vw,44px) clamp(18px,5vw,64px) 64px;max-width:1280px;margin:0 auto}
+.ysec{margin-bottom:clamp(30px,5vw,46px)}
+.ysec.hide{display:none}
+.yhd{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.yn{font-family:'Libre Baskerville',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--text);letter-spacing:-.02em}
+.ys{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.ycnt{margin-left:auto;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
-/* ── YEAR NAV ── */
-.year-nav-wrap {
-  position: sticky; top:0; z-index:200;
-  background: rgba(244,240,232,.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  margin-left: 36px;
-}
-.year-nav {
-  display:flex;
-  align-items:center;
-  overflow-x:auto;
-  padding:0 44px;
-  gap:0;
-  scrollbar-width:none;
-}
-.year-nav::-webkit-scrollbar { display:none; }
-.year-btn {
-  background:none; border:none;
-  color: var(--text-muted);
-  font-family:'Outfit',sans-serif;
-  font-size:.72rem;
-  font-weight:400;
-  letter-spacing:.1em;
-  padding:16px 14px;
-  cursor:pointer;
-  transition:color .2s;
-  white-space:nowrap;
-  position:relative;
-  flex-shrink:0;
-}
-.year-btn::after {
-  content:'';
-  position:absolute;
-  bottom:0; left:14px; right:14px;
-  height:2px;
-  background: var(--brown);
-  transform:scaleX(0);
-  transition:transform .25s cubic-bezier(.25,.46,.45,.94);
-  transform-origin:left;
-}
-.year-btn:hover { color: var(--text-dim); }
-.year-btn.active { color: var(--brown); font-weight:500; }
-.year-btn.active::after { transform:scaleX(1); }
-.year-nav-all {
-  padding-right:20px;
-  border-right:1px solid var(--border);
-  margin-right:6px;
-}
-
-/* ── CONTENT ── */
-.content {
-  max-width:1200px;
-  margin:0 auto;
-  padding:0 48px 120px;
-  margin-left: calc(36px + max(0px, (100vw - 1200px - 36px) / 2));
-}
-
-/* ── YEAR SECTION ── */
-.year-section {
-  display:grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0 56px;
-  padding: 72px 0 0;
-}
-.year-section.hidden { display:none; }
-
-/* sidebar */
-.year-sidebar {
-  position:relative;
-  padding-top:4px;
-}
-.year-number {
-  font-family:'Libre Baskerville',serif;
-  font-size:2.4rem;
-  font-weight:700;
-  color: var(--text);
-  line-height:1;
-  letter-spacing:-.03em;
-  transition:color .3s;
-  opacity:.75;
-}
-.year-label-sub {
-  font-size:.6rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--brown);
-  opacity:.7;
-  margin-top:4px;
-  display:block;
-  font-family:'Outfit',sans-serif;
-}
-.year-section:hover .year-number { color: var(--brown); opacity:1; }
-.year-line {
-  position:absolute;
-  top:0; right:-28px;
-  width:1px;
-  height:calc(100% + 72px);
-  background: linear-gradient(to bottom, var(--border2) 0%, var(--border) 70%, transparent 100%);
-}
-.year-dot {
-  position:absolute;
-  top:12px; right:-33px;
-  width:11px; height:11px;
-  border:1.5px solid var(--border2);
-  border-radius:50%;
-  background: var(--bg);
-  transition:all .3s;
-}
-.year-section:hover .year-dot {
-  background: var(--brown);
-  border-color: var(--brown);
-}
-
-.film-divider.hidden { display:none !important; }
-
-/* ── ALBUM ── */
-.album-header {
-  display:flex;
-  align-items:baseline;
-  gap:12px;
-  margin-bottom:16px;
-  padding-bottom:12px;
-  border-bottom:1px solid var(--border);
-}
-.album-title { font-size:.95rem; font-weight:400; color:var(--text); letter-spacing:.01em; }
-.album-date  { font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-muted); }
-.album-count { font-size:.62rem; letter-spacing:.1em; color:var(--text-muted); margin-left:auto; }
-
-/* ── PHOTO GRID ── */
-.photo-grid { display:grid; gap:3px; }
-.photo-grid[data-count="1"] { grid-template-columns:1fr; max-width:480px; }
-.photo-grid[data-count="2"] { grid-template-columns:1fr 1fr; }
-.photo-grid[data-count="3"] { grid-template-columns:2fr 1fr; grid-template-rows:auto auto; }
-.photo-grid[data-count="3"] .photo-item:first-child { grid-row:span 2; }
-.photo-grid[data-count="4"] { grid-template-columns:1fr 1fr; }
-.photo-grid[data-count="5"] { grid-template-columns:1fr 1fr 1fr; grid-template-rows:auto auto; }
-.photo-grid[data-count="5"] .photo-item:first-child { grid-column:span 2; }
-.photo-grid[data-count="6"] { grid-template-columns:1fr 1fr 1fr; }
-.photo-grid[data-count="many"] { grid-template-columns:repeat(4,1fr); }
-
-/* ── PHOTO ITEM — 필름 프레임 스타일 ── */
-.photo-item {
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  aspect-ratio:4/3;
-  background: #d8d0c0;
-  /* 필름 느낌 — 살짝 크림색 테두리 */
-  outline: 4px solid var(--paper);
-  outline-offset:-4px;
-  transition: outline-color .25s;
-}
-.photo-grid[data-count="3"] .photo-item:first-child { aspect-ratio:unset; min-height:220px; }
-
-.photo-item:hover { outline-color: var(--brown); z-index:5; }
-
-.photo-item img {
-  width:100%; height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94);
-  filter: sepia(.08) contrast(1.02) saturate(.96);
-}
-.photo-item:hover img { transform:scale(1.05); filter:sepia(0) contrast(1.04) saturate(1); }
-
-.photo-ph {
-  width:100%; height:100%;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  background: linear-gradient(135deg, #e8e0d0, #d8ccb8);
-  font-size:2.2rem; gap:6px;
-  min-height:160px;
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94);
-}
-.photo-item:hover .photo-ph { transform:scale(1.04); }
-.photo-ph-label {
-  font-size:.6rem; letter-spacing:.1em;
-  text-transform:uppercase; color:rgba(30,26,20,.35);
-}
-
-.photo-overlay {
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(20,15,8,.72) 0%, transparent 48%);
-  opacity:0;
-  transition:opacity .3s;
-  display:flex; align-items:flex-end;
-  padding:14px;
-}
-.photo-item:hover .photo-overlay { opacity:1; }
-.overlay-text {
-  font-size:.78rem; color:rgba(255,255,255,.88);
-  line-height:1.4;
-  transform:translateY(5px);
-  transition:transform .3s;
-}
-.photo-item:hover .overlay-text { transform:translateY(0); }
-
-/* +N 배지 */
-.more-badge {
-  position:absolute; inset:0;
-  background:rgba(30,26,20,.55);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Libre Baskerville',serif;
-  font-size:1.6rem; font-style:italic;
-  color:rgba(255,255,255,.75);
-  backdrop-filter:blur(2px);
-}
-
-/* ── 필름 스트립 구분선 ── */
-.film-divider {
-  margin: 0 0 0 -48px;
-  width:calc(100% + 96px);
-  height:48px;
-  background: #1e1a14;
-  position:relative;
-  display:flex;
-  align-items:center;
-  padding: 0 0;
-  margin-top: 72px;
-  overflow:hidden;
-}
-.film-divider-inner {
-  display:flex;
-  align-items:center;
-  width:100%;
-  height:100%;
-  gap:0;
-}
-.film-div-holes {
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  padding:0 8px;
-  height:100%;
-  justify-content:center;
-}
-.fdhole {
-  width:14px; height:10px;
-  border-radius:2px;
-  background: #f4f0e8;
-  opacity:.18;
-}
-.film-div-frames {
-  flex:1;
-  display:flex;
-  height:100%;
-  gap:2px;
-  overflow:hidden;
-}
-.film-div-frame {
-  flex:1;
-  border:1px solid rgba(255,255,255,.1);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.1rem;
-  color:rgba(255,255,255,.55);
-  min-width:60px;
-  filter: brightness(1.8);
-}
-
-/* ── LIGHTBOX ── */
-.lightbox {
-  display:none;
-  position:fixed; inset:0; z-index:9000;
-  background:rgba(15,12,8,.96);
-  backdrop-filter:blur(24px);
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:20px;
-  animation:lbIn .28s ease;
-}
-.lightbox.open { display:flex; }
-@keyframes lbIn { from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)} }
-
-/* 라이트박스 필름 프레임 */
-.lb-frame {
-  position:relative;
-  background:#1e1a14;
-  padding:20px;
-  box-shadow:0 40px 100px rgba(0,0,0,.7);
-}
-.lb-frame::before, .lb-frame::after {
-  content:'';
-  position:absolute;
-  top:0; bottom:0;
-  width:20px;
-  background:#2a2018;
-}
-.lb-frame::before { left:0; }
-.lb-frame::after  { right:0; }
-.lb-holes-l, .lb-holes-r {
-  position:absolute;
-  top:0; bottom:0;
-  width:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-around;
-  padding:10px 0;
-  z-index:2;
-}
-.lb-holes-l { left:0; }
-.lb-holes-r { right:0; }
-.lbhole { width:12px; height:9px; border-radius:2px; background:#1e1a14; opacity:.7; }
-
-.lb-img-wrap {
-  max-width:min(85vw,960px);
-  max-height:72vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  z-index:1;
-}
-.lb-img {
-  max-width:100%;
-  max-height:72vh;
-  display:block;
-  filter:sepia(.05) contrast(1.03);
-}
-.lb-ph {
-  width:min(78vw,580px);
-  height:min(58vh,380px);
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  background:#2a2018; font-size:5rem; gap:14px;
-}
-.lb-ph p { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.28); }
-
-.lb-info { text-align:center; }
-.lb-caption {
-  font-family:'Libre Baskerville',serif;
-  font-size:1.05rem; font-style:italic;
-  color:rgba(255,255,255,.75);
-}
-.lb-meta { font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-top:5px; }
-.lb-bottom { display:flex; align-items:center; gap:28px; }
-.lb-nav-btn {
-  background:none; border:1px solid rgba(255,255,255,.14);
-  color:rgba(255,255,255,.45);
-  font-family:'Outfit',sans-serif;
-  font-size:.65rem; letter-spacing:.14em; text-transform:uppercase;
-  padding:10px 22px; border-radius:2px;
-  cursor:pointer; transition:all .2s;
-}
-.lb-nav-btn:hover { border-color:rgba(200,169,110,.6); color:rgba(200,169,110,.8); }
-.lb-counter { font-family:'Libre Baskerville',serif; font-style:italic; color:rgba(255,255,255,.25); font-size:.9rem; min-width:48px; text-align:center; }
-.lb-close {
-  position:fixed; top:26px; right:38px;
-  background:none; border:none;
-  color:rgba(255,255,255,.3);
-  font-family:'Outfit',sans-serif;
-  font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
-  cursor:pointer; transition:color .2s;
-  display:flex; align-items:center; gap:10px; z-index:10;
-}
-.lb-close::before { content:''; width:22px; height:1px; background:currentColor; display:inline-block; }
-.lb-close:hover { color:rgba(200,169,110,.8); }
-
-/* ── SLIDESHOW ── */
-.slideshow {
-  display:none;
-  position:fixed; inset:0; z-index:9500;
-  background:#0e0b07;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-.slideshow.open { display:flex; }
-
-.ss-blur {
-  position:absolute; inset:0;
-  background-size:cover; background-position:center;
-  filter:blur(60px) brightness(.15) saturate(1.5) sepia(.3);
-  transform:scale(1.15);
-  transition:background-image .8s;
-}
-.ss-main { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:22px; width:100%; padding:0 20px; }
-
-/* 슬라이드쇼도 필름 프레임 */
-.ss-film-frame {
-  position:relative;
-  background:#1a1510;
-  padding:16px 28px;
-  animation:ssIn .55s cubic-bezier(.25,.46,.45,.94);
-}
-@keyframes ssIn { from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)} }
-.ss-film-frame::before, .ss-film-frame::after {
-  content:'';
-  position:absolute; top:0; bottom:0;
-  width:28px; background:#241e16;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:space-around; padding:10px 0;
-}
-.ss-film-frame::before { left:0; }
-.ss-film-frame::after  { right:0; }
-.ss-holes-l, .ss-holes-r {
-  position:absolute; top:0; bottom:0; width:28px;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:space-around; padding:10px 0; z-index:2;
-}
-.ss-holes-l { left:0; } .ss-holes-r { right:0; }
-.sshole { width:16px; height:11px; border-radius:2px; background:#0e0b07; opacity:.75; }
-
-.ss-inner { position:relative; z-index:1; max-width:min(80vw,880px); max-height:68vh; display:flex; align-items:center; justify-content:center; }
-.ss-img { max-width:100%; max-height:68vh; display:block; filter:sepia(.06) contrast(1.03); }
-.ss-ph { width:min(70vw,680px); height:min(55vh,440px); display:flex; flex-direction:column; align-items:center; justify-content:center; background:#241e16; font-size:5.5rem; gap:16px; }
-
-.ss-text { text-align:center; }
-.ss-caption { font-family:'Libre Baskerville',serif; font-style:italic; font-size:1.1rem; color:rgba(255,255,255,.75); }
-.ss-sub { font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-top:6px; }
-.ss-progress { width:min(54vw,340px); height:1px; background:rgba(255,255,255,.1); }
-.ss-bar { height:100%; background:rgba(200,169,110,.7); width:0%; }
-
-.ss-ctrl-bar { position:fixed; bottom:32px; left:50%; transform:translateX(-50%); z-index:3; display:flex; align-items:center; gap:20px; }
-.ss-btn { background:none; border:none; color:rgba(255,255,255,.3); font-family:'Outfit',sans-serif; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; transition:color .2s; padding:8px 4px; }
-.ss-btn:hover { color:rgba(200,169,110,.8); }
-.ss-btn.pause { font-size:1rem; }
-.ss-ctr { font-family:'Libre Baskerville',serif; font-style:italic; color:rgba(255,255,255,.2); font-size:.9rem; min-width:44px; text-align:center; }
-.ss-close { position:fixed; top:26px; right:38px; z-index:10; background:none; border:none; color:rgba(255,255,255,.28); font-family:'Outfit',sans-serif; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; cursor:pointer; transition:color .2s; display:flex; align-items:center; gap:10px; }
-.ss-close::before { content:''; width:22px; height:1px; background:currentColor; display:inline-block; }
-.ss-close:hover { color:rgba(200,169,110,.8); }
-
-.ss-open-btn {
-  position:fixed; bottom:36px; right:44px;
-  background: var(--text);
-  border:none;
-  color: var(--bg);
-  font-family:'Outfit',sans-serif;
-  font-size:.65rem; letter-spacing:.18em; text-transform:uppercase;
-  padding:13px 24px;
-  cursor:pointer;
-  transition:all .25s;
-  z-index:50;
-}
-.ss-open-btn:hover { background: var(--brown); color:#fff; }
+/* 앨범 그리드 */
+.grid{display:grid;gap:10px}
+.grid[data-n="1"]{grid-template-columns:1fr}
+.grid[data-n="2"]{grid-template-columns:1fr 1fr}
+.grid[data-n="3"]{grid-template-columns:1.6fr 1fr}
+.grid[data-n="many"]{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.col{display:flex;flex-direction:column;gap:10px}
+.alb{position:relative;border-radius:14px;overflow:hidden;cursor:pointer;background:#e8e6e2;display:block;text-decoration:none}
+.alb.big{min-height:clamp(200px,30vw,280px)}
+.alb.sm{flex:1;min-height:clamp(96px,14vw,135px)}
+.alb.one{min-height:clamp(180px,26vw,240px)}
+.alb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.alb:hover img{transform:scale(1.05)}
+.ovl{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(8,10,12,.88) 0%,rgba(8,10,12,.3) 45%,transparent 72%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,2vw,20px)}
+.ct{font-size:clamp(13px,1.6vw,15.5px);font-weight:500;color:#fff;letter-spacing:-.01em;line-height:1.3}
+.ct.s{font-size:clamp(12px,1.4vw,13.5px)}
+.cd{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:5px;font-weight:500}
+.bdg{position:absolute;top:14px;left:15px;z-index:3;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:5px 11px;border-radius:100px;font-size:8.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.go{position:absolute;top:13px;right:14px;z-index:3;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;transition:background .25s}
+.alb:hover .go{background:rgba(255,255,255,.3)}
 
 /* ── FOOTER ── */
-.site-footer {
-  margin-left:36px;
-  border-top:1px solid var(--border);
-  padding:44px 60px;
-  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
-  background: var(--bg);
-}
-.footer-brand { font-family:'Libre Baskerville',serif; font-style:italic; font-size:1rem; color:var(--text-dim); }
-.footer-copy { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); }
+footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,64px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:1280px;margin:0 auto}
+.fb{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.95rem;color:var(--dim)}
+.fc{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
-@media(max-width:720px){
-  .film-rail { display:none; }
-  .hero { padding:36px 20px; grid-template-columns:1fr; gap:28px; }
-  .hero-photo-wrap { width:100%; max-width:420px; margin:0 auto; }
-  .hero-film-strip { width:120px; }
-  .film-frames { display:none; }
-  .year-nav-wrap { margin-left:0; }
-  .content { padding:0 18px 80px; margin-left:0; }
-  .year-section { grid-template-columns:1fr; gap:16px; padding-top:52px; }
-  .year-sidebar { display:flex; align-items:center; gap:14px; padding:0; }
-  .year-line, .year-dot { display:none; }
-  .year-number { font-size:1.8rem; }
-  .photo-grid[data-count="many"] { grid-template-columns:repeat(3,1fr); }
-  .film-divider { margin-left:-18px; width:calc(100% + 36px); }
-  .ss-open-btn { bottom:20px; right:18px; }
-  .site-footer { margin-left:0; padding:32px 24px; }
+@media(max-width:640px){
+  .grid[data-n="3"]{grid-template-columns:1fr}
+  .grid[data-n="2"]{grid-template-columns:1fr}
+  .col{flex-direction:row}
+  .grid[data-n="many"]{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- 왼쪽 필름 레일 -->
-<div class="film-rail" id="filmRail"></div>
-
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
-  <!-- 왼쪽: 텍스트 -->
-  <div class="hero-content">
-    <div class="hero-eyebrow">Family Archive · Film Roll</div>
-    <h1>우리의 시간을<br><em>사진으로 남기다</em></h1>
-    <span class="hero-subtitle-de">Unsere Zeit in Bildern festhalten</span>
-    <div class="hero-names">
-      <span>박지형</span><span>박주형</span><span>채유리</span><span>박철의</span>
-    </div>
-    <div class="hero-range">
-      <span class="hero-range-dot"></span>
-      2007 — 2024 · 17년의 기록
-    </div>
+  <div class="hero-slides" id="hslides"></div>
+  <div class="strip">
+    <div class="sh l" id="shl"></div>
+    <div class="sh r" id="shr"></div>
+    <div class="sframes" id="sframes"></div>
   </div>
-
-  <!-- 오른쪽: 필름 프레임 슬라이드쇼 -->
-  <div class="hero-photo-wrap">
-    <div class="hero-film">
-      <div class="hero-film-holes left" id="heroHolesL"></div>
-      <div class="hero-film-holes right" id="heroHolesR"></div>
-      <div class="hero-film-holes-top" id="heroHolesT"></div>
-      <div class="hero-film-holes-bottom" id="heroHolesB"></div>
-      <div class="hero-photo-slot" id="heroPhotoSlot">
-        <!-- 슬라이드 이미지들 — src에 사진 경로를 넣어주세요 -->
-        <!-- 예: <img class="hero-photo-slide" src="photos/family1.jpg" alt=""> -->
-        <div class="hero-photo-empty" id="heroPhotoEmpty">
-          <span class="hero-photo-empty-icon">📷</span>
-          <span>아래 HTML에서</span>
-          <span style="opacity:.6;font-size:.55rem;margin-top:2px;">사진 경로를 입력해 주세요</span>
-        </div>
-        <div class="hero-slide-dots" id="heroSlideDots"></div>
-      </div>
-      <div class="hero-film-number" id="heroFilmNumber">Family · No.001</div>
-    </div>
+  <div class="hero-in">
+    <div class="eb">Family Archive · Film Roll</div>
+    <h1 class="h1">우리의 시간을<br><em>사진으로 남기다</em></h1>
+    <div class="de">Unsere Zeit in Bildern festhalten</div>
+    <div class="nm"><span>박지형</span><span>박주형</span><span>채유리</span><span>박철의</span></div>
+    <div class="rg"><span class="rd"></span>2007 — 2025 · 18년의 기록</div>
   </div>
+  <div class="hdots" id="hdots"></div>
 </section>
 
-<!-- ── YEAR NAV ── -->
-<nav class="year-nav-wrap">
-  <div class="year-nav" id="yearNav"></div>
-</nav>
+<!-- NAV -->
+<nav class="nav" id="nav"></nav>
 
-<!-- ── CONTENT ── -->
-<main class="content" id="mainContent"></main>
+<!-- BODY -->
+<main class="body" id="main"></main>
 
-<!-- 슬라이드쇼 버튼 (사진 직접 업로드 시 활성화) -->
-<button class="ss-open-btn" id="ssOpenBtn" style="display:none">▶ Slideshow</button>
-
-<!-- ── LIGHTBOX ── -->
-<div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lbClose">Close</button>
-  <div class="lb-frame">
-    <div class="lb-holes-l" id="lbHolesL"></div>
-    <div class="lb-holes-r" id="lbHolesR"></div>
-    <div class="lb-img-wrap" id="lbImgWrap"></div>
-  </div>
-  <div class="lb-bottom">
-    <button class="lb-nav-btn" id="lbPrev">← Prev</button>
-    <div class="lb-info">
-      <div class="lb-caption" id="lbCap"></div>
-      <div class="lb-meta" id="lbMeta"></div>
-    </div>
-    <span class="lb-counter" id="lbCtr"></span>
-    <button class="lb-nav-btn" id="lbNext">Next →</button>
-  </div>
-</div>
-
-<!-- ── SLIDESHOW ── -->
-<div class="slideshow" id="ssOverlay">
-  <div class="ss-blur" id="ssBg"></div>
-  <button class="ss-close" id="ssClose">Close</button>
-  <div class="ss-main">
-    <div class="ss-film-frame" id="ssFilmFrame">
-      <div class="ss-holes-l" id="ssHolesL"></div>
-      <div class="ss-holes-r" id="ssHolesR"></div>
-      <div class="ss-inner" id="ssInner"></div>
-    </div>
-    <div class="ss-text">
-      <div class="ss-caption" id="ssCap"></div>
-      <div class="ss-sub" id="ssSub"></div>
-    </div>
-    <div class="ss-progress"><div class="ss-bar" id="ssBar"></div></div>
-  </div>
-  <div class="ss-ctrl-bar">
-    <button class="ss-btn" id="ssPrev">← Prev</button>
-    <button class="ss-btn pause" id="ssPause">⏸</button>
-    <span class="ss-ctr" id="ssCtr"></span>
-    <button class="ss-btn" id="ssNext">Next →</button>
-  </div>
-</div>
-
-<!-- ── FOOTER ── -->
-<footer class="site-footer">
-  <span class="footer-brand">박지형 · 박주형 · 채유리 · 박철의 가족</span>
-  <span class="footer-copy" id="footerCopy"></span>
+<footer>
+  <span class="fb">박지형 · 박주형 · 채유리 · 박철의 가족</span>
+  <span class="fc" id="fc"></span>
 </footer>
 
 <script>
-// ════════════════════════════════════════════════════════
-//  📸 사진 데이터
-//  src: "photos/파일명.jpg"  ← 실제 경로 입력
-//  비워두면 이모지로 표시됩니다
-// ════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+//  앨범 데이터 — cover는 대표 사진 번호
+// ═══════════════════════════════════════════════
 const data = [
   { year:2025, albums:[
-    { title:"오키나와·서울 여행", date:"2025년", emoji:"✈️",
+    { title:"오키나와 · 서울 여행", date:"2025년", tag:"Travel", cover:34,
       url:"https://sites.google.com/allesgute.co.kr/2025-okinawa-seoul/%ED%99%88" },
-    { title:"일상", date:"2025년", emoji:"📷",
+    { title:"필리핀 보홀 여행", date:"2025년", tag:"Travel", cover:49,
+      url:"https://sites.google.com/allesgute.co.kr/2025-photo-story/%ED%99%88" },
+    { title:"일상", date:"2025년", tag:"Daily", cover:55,
       url:"https://sites.google.com/allesgute.co.kr/2025-photo-story/%ED%99%88" },
   ]},
   { year:2024, albums:[
-    { title:"지주 가족 이야기", date:"2024년", emoji:"👨‍👩‍👧‍👦",
+    { title:"지주 가족 이야기", date:"2024년", tag:"Family", cover:53,
       url:"https://sites.google.com/allesgute.co.kr/2024jijufamilystory/%ED%99%88" },
-    { title:"일상", date:"2024년", emoji:"📷",
-      url:"https://sites.google.com/allesgute.co.kr/2024-photo-story/%ED%99%88" },
-    { title:"포토스토리", date:"2024년", emoji:"🌸",
+    { title:"포토스토리", date:"2024년", tag:"Story", cover:29,
       url:"https://sites.google.com/allesgute.co.kr/2024photostory/%ED%99%88" },
+    { title:"일상", date:"2024년", tag:"Daily", cover:32,
+      url:"https://sites.google.com/allesgute.co.kr/2024-photo-story/%ED%99%88" },
   ]},
   { year:2023, albums:[
-    { title:"일상", date:"2023년", emoji:"📷",
-      url:"https://sites.google.com/allesgute.co.kr/2023photostory/%ED%99%88" },
-    { title:"서울·덕산 여행", date:"2023년", emoji:"🏙️",
+    { title:"서울 · 덕산 여행", date:"2023년", tag:"Travel", cover:23,
       url:"https://sites.google.com/allesgute.co.kr/2023-seoul-deoksan-traveling/%ED%99%88" },
+    { title:"일상", date:"2023년", tag:"Daily", cover:30,
+      url:"https://sites.google.com/allesgute.co.kr/2023photostory/%ED%99%88" },
   ]},
   { year:2022, albums:[
-    { title:"일상", date:"2022년", emoji:"📷",
-      url:"https://sites.google.com/allesgute.co.kr/2022photpstory/%ED%99%88" },
-    { title:"여름 제주도 여행", date:"2022년 여름", emoji:"🌊",
+    { title:"여름 제주도 여행", date:"2022년 여름", tag:"Travel", cover:44,
       url:"https://sites.google.com/allesgute.co.kr/2022-summer-jeju-traveling/%ED%99%88" },
+    { title:"일상", date:"2022년", tag:"Daily", cover:22,
+      url:"https://sites.google.com/allesgute.co.kr/2022photpstory/%ED%99%88" },
   ]},
   { year:2021, albums:[
-    { title:"일상", date:"2021년", emoji:"🌿",
+    { title:"일상", date:"2021년", tag:"Daily", cover:21,
       url:"https://sites.google.com/allesgute.co.kr/2021-photo-story/%ED%99%88" },
   ]},
   { year:2020, albums:[
-    { title:"일상", date:"2020년", emoji:"📷",
-      url:"https://sites.google.com/allesgute.co.kr/2020photostory/%ED%99%88" },
-    { title:"베트남 푸쿠옥 여행", date:"2020년", emoji:"🌴",
+    { title:"베트남 푸쿠옥 여행", date:"2020년", tag:"Travel", cover:14,
       url:"https://sites.google.com/allesgute.co.kr/2020photostory-phuquoc/%ED%99%88" },
+    { title:"일상", date:"2020년", tag:"Daily", cover:13,
+      url:"https://sites.google.com/allesgute.co.kr/2020photostory/%ED%99%88" },
   ]},
   { year:2019, albums:[
-    { title:"일상", date:"2019년", emoji:"📷",
-      url:"https://sites.google.com/allesgute.co.kr/2019-photo-story/%ED%99%88" },
-    { title:"필리핀 세부 여행", date:"2019년", emoji:"🐠",
+    { title:"필리핀 세부 여행", date:"2019년", tag:"Travel", cover:15,
       url:"https://sites.google.com/allesgute.co.kr/2019photostory-cebu-traveling/%ED%99%88" },
+    { title:"일상", date:"2019년", tag:"Daily", cover:16,
+      url:"https://sites.google.com/allesgute.co.kr/2019-photo-story/%ED%99%88" },
   ]},
   { year:2018, albums:[
-    { title:"베트남 다낭 여행", date:"2018년", emoji:"🛵",
+    { title:"베트남 다낭 여행", date:"2018년", tag:"Travel", cover:9,
       url:"https://sites.google.com/allesgute.co.kr/2018photostory-danang/%ED%99%88" },
   ]},
   { year:2017, albums:[
-    { title:"일상", date:"2017년", emoji:"📷",
+    { title:"일상", date:"2017년", tag:"Daily", cover:6,
       url:"https://sites.google.com/allesgute.co.kr/2017photostory/%ED%99%88" },
   ]},
   { year:2016, albums:[
-    { title:"일상", date:"2016년", emoji:"📷",
+    { title:"일상", date:"2016년", tag:"Daily", cover:8,
       url:"https://sites.google.com/allesgute.co.kr/2016-photo-story/%ED%99%88" },
   ]},
   { year:2015, albums:[
-    { title:"일상", date:"2015년", emoji:"🌸",
-      url:"https://sites.google.com/allesgute.co.kr/2015-photo-story/%ED%99%88" },
-    { title:"제주도 여행", date:"2015년", emoji:"🌊",
+    { title:"제주도 여행", date:"2015년", tag:"Travel", cover:5,
       url:"https://sites.google.com/allesgute.co.kr/2015-photo-story-jejutraveling/%ED%99%88" },
-    { title:"군산·전주 여행", date:"2015년", emoji:"🏯",
+    { title:"군산 · 전주 여행", date:"2015년", tag:"Travel", cover:12,
       url:"https://sites.google.com/allesgute.co.kr/2015photostory-gunsan-jeonju/%ED%99%88" },
+    { title:"일상", date:"2015년", tag:"Daily", cover:11,
+      url:"https://sites.google.com/allesgute.co.kr/2015-photo-story/%ED%99%88" },
   ]},
   { year:2014, albums:[
-    { title:"일상", date:"2014년", emoji:"📷",
+    { title:"일상", date:"2014년", tag:"Daily", cover:4,
       url:"https://sites.google.com/allesgute.co.kr/2014-photo-story/%ED%99%88" },
   ]},
   { year:2013, albums:[
-    { title:"일상", date:"2013년", emoji:"📷",
+    { title:"일상", date:"2013년", tag:"Daily", cover:3,
       url:"https://sites.google.com/allesgute.co.kr/2013-photo-story/%ED%99%88" },
   ]},
   { year:2012, albums:[
-    { title:"일상", date:"2012년", emoji:"📷",
+    { title:"일상", date:"2012년", tag:"Daily", cover:2,
       url:"https://sites.google.com/allesgute.co.kr/2012-photo-story/%ED%99%88" },
   ]},
   { year:2011, albums:[
-    { title:"일상", date:"2011년", emoji:"🌻",
-      url:"https://sites.google.com/allesgute.co.kr/2011-photo-story/%ED%99%88" },
-    { title:"일본 후쿠오카 여행", date:"2011년", emoji:"🗾",
+    { title:"일본 후쿠오카 여행", date:"2011년", tag:"Travel", cover:1,
       url:"https://sites.google.com/allesgute.co.kr/2011photostory-hukuoka/%ED%99%88" },
+    { title:"일상", date:"2011년", tag:"Daily", cover:2,
+      url:"https://sites.google.com/allesgute.co.kr/2011-photo-story/%ED%99%88" },
   ]},
   { year:2010, albums:[
-    { title:"일상", date:"2010년", emoji:"📷",
+    { title:"일상", date:"2010년", tag:"Daily", cover:3,
       url:"https://sites.google.com/allesgute.co.kr/2010photostory/%ED%99%88" },
   ]},
   { year:2009, albums:[
-    { title:"일상", date:"2009년", emoji:"📷",
-      url:"https://sites.google.com/allesgute.co.kr/2009-photo-story/%ED%99%88" },
-    { title:"결혼식", date:"2009년", emoji:"💍",
+    { title:"결혼식", date:"2009년", tag:"Wedding", cover:2,
       url:"https://sites.google.com/allesgute.co.kr/2009-photo-story-wedding/%ED%99%88" },
-    { title:"신혼여행", date:"2009년", emoji:"🥂",
+    { title:"신혼여행", date:"2009년", tag:"Travel", cover:3,
       url:"https://sites.google.com/allesgute.co.kr/2009-photo-story-honeymoon/%ED%99%88" },
+    { title:"일상", date:"2009년", tag:"Daily", cover:4,
+      url:"https://sites.google.com/allesgute.co.kr/2009-photo-story/%ED%99%88" },
   ]},
   { year:2007, albums:[
-    { title:"2007–2008 The Beginning of Love", date:"2007 — 2008", emoji:"💑",
+    { title:"2007–2008 The Beginning of Love", date:"2007 — 2008", tag:"Story", cover:2,
       url:"https://sites.google.com/allesgute.co.kr/20072008thebeginningoflove/%ED%99%88" },
   ]},
 ];
 
-// ── 필름 구멍 생성 헬퍼 ──
-function makeHoles(container, count=6) {
-  for(let i=0;i<count;i++){
-    const h=document.createElement('div');
-    h.className=container.className.includes('lb')?'lbhole':container.className.includes('ss-holes')?'sshole':'fhole';
-    container.appendChild(h);
-  }
-}
-
-// ── 왼쪽 레일 구멍 ──
-(function(){
-  const rail=document.getElementById('filmRail');
-  for(let i=0;i<60;i++){
-    const s=document.createElement('div');
-    s.className='sprocket';
-    rail.appendChild(s);
-  }
-})();
-
-// ── 히어로 필름 구멍 ──
-(function(){
-  const l=document.getElementById('heroHolesL');
-  const r=document.getElementById('heroHolesR');
-  const t=document.getElementById('heroHolesT');
-  const b=document.getElementById('heroHolesB');
-  // 좌우 구멍
-  for(let i=0;i<8;i++){
-    [l,r].forEach(el=>{const h=document.createElement('div');h.className='fhole';el.appendChild(h);});
-  }
-  // 상하 구멍
-  for(let i=0;i<12;i++){
-    [t,b].forEach(el=>{const h=document.createElement('div');h.className='fhole-h';el.appendChild(h);});
-  }
-})();
+// 히어로 슬라이드쇼용 사진 (전체 62장 순환)
+const HERO_TOTAL = 62;
+const STRIP_PHOTOS = [34,49,29,53,44,23];
+const INTERVAL = 3000;
 
 // ── 히어로 슬라이드쇼 ──
-// ✏️ 여기에 사진 경로를 추가하세요 (src 배열)
 (function(){
-        const heroSlides = [
-    { src:"1.jpg", label:"Family · No.001" },
-    { src:"2.jpg", label:"Family · No.002" },
-    { src:"3.jpg", label:"Family · No.003" },
-    { src:"4.jpg", label:"Family · No.004" },
-    { src:"5.jpg", label:"Family · No.005" },
-    { src:"6.jpg", label:"Family · No.006" },
-    { src:"7.jpg", label:"Family · No.007" },
-    { src:"8.jpg", label:"Family · No.008" },
-    { src:"9.jpg", label:"Family · No.009" },
-    { src:"10.jpg", label:"Family · No.010" },
-    { src:"11.jpg", label:"Family · No.011" },
-    { src:"12.jpg", label:"Family · No.012" },
-    { src:"13.jpg", label:"Family · No.013" },
-    { src:"14.jpg", label:"Family · No.014" },
-    { src:"15.jpg", label:"Family · No.015" },
-    { src:"16.jpg", label:"Family · No.016" },
-    { src:"17.jpg", label:"Family · No.017" },
-    { src:"18.jpg", label:"Family · No.018" },
-    { src:"19.jpg", label:"Family · No.019" },
-    { src:"20.jpg", label:"Family · No.020" },
-    { src:"21.jpg", label:"Family · No.021" },
-    { src:"22.jpg", label:"Family · No.022" },
-    { src:"23.jpg", label:"Family · No.023" },
-    { src:"24.jpg", label:"Family · No.024" },
-    { src:"25.jpg", label:"Family · No.025" },
-    { src:"26.jpg", label:"Family · No.026" },
-    { src:"27.jpg", label:"Family · No.027" },
-    { src:"28.jpg", label:"Family · No.028" },
-    { src:"29.jpg", label:"Family · No.029" },
-    { src:"30.jpg", label:"Family · No.030" },
-    { src:"31.jpg", label:"Family · No.031" },
-    { src:"32.jpg", label:"Family · No.032" },
-    { src:"33.jpg", label:"Family · No.033" },
-    { src:"34.jpg", label:"Family · No.034" },
-    { src:"35.jpg", label:"Family · No.035" },
-    { src:"36.jpg", label:"Family · No.036" },
-    { src:"37.jpg", label:"Family · No.037" },
-    { src:"38.jpg", label:"Family · No.038" },
-    { src:"39.jpg", label:"Family · No.039" },
-    { src:"40.jpg", label:"Family · No.040" },
-    { src:"41.jpg", label:"Family · No.041" },
-    { src:"42.jpg", label:"Family · No.042" },
-    { src:"43.jpg", label:"Family · No.043" },
-    { src:"44.jpg", label:"Family · No.044" },
-    { src:"45.jpg", label:"Family · No.045" },
-    { src:"46.jpg", label:"Family · No.046" },
-    { src:"47.jpg", label:"Family · No.047" },
-    { src:"48.jpg", label:"Family · No.048" },
-    { src:"49.jpg", label:"Family · No.049" },
-    { src:"50.jpg", label:"Family · No.050" },
-    { src:"51.jpg", label:"Family · No.051" },
-    { src:"52.jpg", label:"Family · No.052" },
-    { src:"53.jpg", label:"Family · No.053" },
-    { src:"54.jpg", label:"Family · No.054" },
-    { src:"55.jpg", label:"Family · No.055" },
-    { src:"56.jpg", label:"Family · No.056" },
-    { src:"57.jpg", label:"Family · No.057" },
-    { src:"58.jpg", label:"Family · No.058" },
-    { src:"59.jpg", label:"Family · No.059" },
-    { src:"60.jpg", label:"Family · No.060" },
-    { src:"61.jpg", label:"Family · No.061" },
-    { src:"62.jpg", label:"Family · No.062" },
-  ];
+  const wrap = document.getElementById('hslides');
+  const dots = document.getElementById('hdots');
+  const imgs = [];
 
-  const slot   = document.getElementById('heroPhotoSlot');
-  const dots   = document.getElementById('heroSlideDots');
-  const numEl  = document.getElementById('heroFilmNumber');
-  const empty  = document.getElementById('heroPhotoEmpty');
-  const INTERVAL = 3000;
-
-  if(!heroSlides.length) return; // 사진 없으면 빈 상태 유지
-  empty.style.display='none';
-
-  // 슬라이드 img 생성
-  const imgs = heroSlides.map((s,i)=>{
-    const img=document.createElement('img');
-    img.className='hero-photo-slide'+(i===0?' active':'');
-    img.src=s.src; img.alt='Family';
-    slot.insertBefore(img, dots);
-    return img;
-  });
-
-  // 도트 생성
-  heroSlides.forEach((_,i)=>{
+  for(let i=1;i<=HERO_TOTAL;i++){
     const d=document.createElement('div');
-    d.className='hero-slide-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>goTo(i));
-    dots.appendChild(d);
-  });
-
-  let cur=0, timer=null;
-
-  function goTo(n){
-    imgs[cur].classList.remove('active');
-    dots.children[cur].classList.remove('active');
-    cur=n;
-    imgs[cur].classList.add('active');
-    dots.children[cur].classList.add('active');
-    numEl.textContent=heroSlides[cur].label||`Family · No.${String(cur+1).padStart(3,'0')}`;
+    d.className='hslide'+(i===1?' on':'');
+    d.style.backgroundImage=`url('${i}.jpg')`;
+    wrap.appendChild(d);
+    imgs.push(d);
   }
-
-  function next(){ goTo((cur+1)%heroSlides.length); }
-
-  function startTimer(){ timer=setInterval(next, INTERVAL); }
-  function stopTimer(){ clearInterval(timer); }
-
-  slot.addEventListener('mouseenter', stopTimer);
-  slot.addEventListener('mouseleave', startTimer);
-  startTimer();
+  // 도트는 6개만 (그룹 표시)
+  const DOTS=6;
+  for(let i=0;i<DOTS;i++){
+    const dt=document.createElement('div');
+    dt.className='hd'+(i===0?' on':'');
+    dots.appendChild(dt);
+  }
+  let cur=0;
+  setInterval(()=>{
+    imgs[cur].classList.remove('on');
+    cur=(cur+1)%HERO_TOTAL;
+    imgs[cur].classList.add('on');
+    const di=Math.floor(cur/HERO_TOTAL*DOTS);
+    [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===di));
+  },INTERVAL);
 })();
 
-// ── 라이트박스 구멍 ──
-makeHoles(document.getElementById('lbHolesL'),7);
-makeHoles(document.getElementById('lbHolesR'),7);
-makeHoles(document.getElementById('ssHolesL'),6);
-makeHoles(document.getElementById('ssHolesR'),6);
-
-// ── DATA ──
-let allPhotos=[], lbIdx=0, activeYear="all";
-
-function rebuildFlat(){
-  allPhotos=[];
-  // url 링크 구조에서는 flat list 불필요 — 슬라이드쇼 비활성
-}
-
-// ── YEAR NAV ──
-function buildYearNav(){
-  const nav=document.getElementById('yearNav');
-  nav.innerHTML='';
-  const agBtn = document.createElement('a');
-  agBtn.href = "https://sites.google.com/allesgute.co.kr/year/%ED%99%88";
-  agBtn.target = "_blank";
-  agBtn.className = "year-btn year-nav-all";
-  agBtn.style.cssText = "color:var(--brown);font-weight:500;text-decoration:none;border-right:1px solid var(--border);margin-right:6px;padding-right:20px;";
-  agBtn.textContent = "Alles Gute";
-  nav.appendChild(agBtn);
-
-  const allBtn=document.createElement('button');
-  allBtn.className='year-btn year-nav-all active';
-  allBtn.textContent='All';
-  allBtn.dataset.year='all';
-  allBtn.onclick=()=>filterYear('all',allBtn);
-  nav.appendChild(allBtn);
-  data.forEach(yd=>{
-    const btn=document.createElement('button');
-    btn.className='year-btn';
-    btn.textContent=yd.year;
-    btn.dataset.year=yd.year;
-    btn.onclick=()=>filterYear(String(yd.year),btn);
-    nav.appendChild(btn);
-  });
-}
-
-function filterYear(year,btn){
-  activeYear=year;
-  document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-
-  document.querySelectorAll('.year-section').forEach(sec=>{
-    sec.classList.toggle('hidden', year!=='all' && sec.dataset.year!==year);
-  });
-
-  // 필름 구분선: 전체 보기일 때만 표시
-  document.querySelectorAll('.film-divider').forEach(div=>{
-    if(year==='all'){
-      div.classList.remove('hidden');
-    } else {
-      div.classList.add('hidden');
-    }
-  });
-
-  if(year!=='all'){
-    const t=document.querySelector(`.year-section[data-year="${year}"]`);
-    if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+// ── 필름 스트립 ──
+(function(){
+  const l=document.getElementById('shl'), r=document.getElementById('shr');
+  for(let i=0;i<18;i++){
+    [l,r].forEach(el=>{const d=document.createElement('div');d.className='sf';el.appendChild(d);});
   }
-  rebuildFlat();
-}
+  const f=document.getElementById('sframes');
+  STRIP_PHOTOS.forEach(n=>{
+    const d=document.createElement('div');
+    d.className='sfr';
+    d.style.backgroundImage=`url('${n}.jpg')`;
+    f.appendChild(d);
+  });
+})();
 
-// ── CONTENT ──
-function buildContent(){
-  const main=document.getElementById('mainContent');
-  main.innerHTML='';
-  allPhotos=[];
+// ── NAV ──
+(function(){
+  const nav=document.getElementById('nav');
+  const ag=document.createElement('a');
+  ag.className='ag';
+  ag.href='https://sites.google.com/allesgute.co.kr/year/%ED%99%88';
+  ag.target='_blank';
+  ag.textContent='Alles Gute';
+  nav.appendChild(ag);
 
-  data.forEach((yd,yi)=>{
-    // 필름 구분선
-    if(yi>0){
-      const div=document.createElement('div');
-      div.className='film-divider';
-      const inner=document.createElement('div');
-      inner.className='film-divider-inner';
-      const emojis=['📸','🌸','✈️','🎂','🌊','🎄','👶','🏖️','❄️','🎑','🌻','🍂'];
-      const lh=document.createElement('div'); lh.className='film-div-holes';
-      for(let i=0;i<2;i++){const h=document.createElement('div');h.className='fdhole';lh.appendChild(h);}
-      const frames=document.createElement('div'); frames.className='film-div-frames';
-      for(let i=0;i<20;i++){
-        const fr=document.createElement('div'); fr.className='film-div-frame';
-        fr.textContent=emojis[(yi+i)%emojis.length]; frames.appendChild(fr);
-      }
-      const rh=document.createElement('div'); rh.className='film-div-holes';
-      for(let i=0;i<2;i++){const h=document.createElement('div');h.className='fdhole';rh.appendChild(h);}
-      inner.appendChild(lh); inner.appendChild(frames); inner.appendChild(rh);
-      div.dataset.beforeYear = yd.year;
-      div.appendChild(inner);
-      main.appendChild(div);
+  const all=document.createElement('button');
+  all.className='tb on'; all.textContent='All'; all.dataset.y='all';
+  nav.appendChild(all);
+  data.forEach(yd=>{
+    const b=document.createElement('button');
+    b.className='tb'; b.textContent=yd.year; b.dataset.y=yd.year;
+    nav.appendChild(b);
+  });
+
+  nav.addEventListener('click',e=>{
+    const b=e.target.closest('.tb'); if(!b) return;
+    nav.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const y=b.dataset.y;
+    document.querySelectorAll('.ysec').forEach(s=>{
+      s.classList.toggle('hide', y!=='all' && s.dataset.year!==y);
+    });
+    if(y!=='all'){
+      const t=document.querySelector(`.ysec[data-year="${y}"]`);
+      if(t) window.scrollTo({top:t.getBoundingClientRect().top+scrollY-70,behavior:'smooth'});
+    }
+  });
+})();
+
+// ── BODY ──
+(function(){
+  const main=document.getElementById('main');
+
+  data.forEach(yd=>{
+    const sec=document.createElement('section');
+    sec.className='ysec'; sec.dataset.year=yd.year;
+
+    const hd=document.createElement('div');
+    hd.className='yhd';
+    hd.innerHTML=`<span class="yn">${yd.year}</span><span class="ys">년도</span>
+      <span class="ycnt">${yd.albums.length} album${yd.albums.length>1?'s':''}</span>`;
+    sec.appendChild(hd);
+
+    const n=yd.albums.length;
+    const grid=document.createElement('div');
+    grid.className='grid';
+    grid.dataset.n = n===1?'1' : n===2?'2' : n===3?'3' : 'many';
+
+    function makeCard(al, cls){
+      const a=document.createElement('a');
+      a.className='alb '+cls;
+      a.href=al.url; a.target='_blank';
+      a.innerHTML=`
+        <img src="${al.cover}.jpg" alt="${al.title}" loading="lazy">
+        ${al.tag?`<span class="bdg">${al.tag}</span>`:''}
+        <span class="go">→</span>
+        <div class="ovl">
+          <div class="ct${cls==='sm'?' s':''}">${al.title}</div>
+          <div class="cd">${al.date}</div>
+        </div>`;
+      return a;
     }
 
-    const sec=document.createElement('section');
-    sec.className='year-section';
-    sec.dataset.year=yd.year;
+    if(n===3){
+      grid.appendChild(makeCard(yd.albums[0],'big'));
+      const col=document.createElement('div'); col.className='col';
+      col.appendChild(makeCard(yd.albums[1],'sm'));
+      col.appendChild(makeCard(yd.albums[2],'sm'));
+      grid.appendChild(col);
+    } else if(n===1){
+      grid.appendChild(makeCard(yd.albums[0],'one'));
+    } else {
+      yd.albums.forEach(al=>grid.appendChild(makeCard(al,'one')));
+    }
 
-    const sidebar=document.createElement('div');
-    sidebar.className='year-sidebar';
-    sidebar.innerHTML=`<div class="year-number">${yd.year}<span class="year-label-sub">년도</span></div><div class="year-line"></div><div class="year-dot"></div>`;
-
-    const albums=document.createElement('div');
-    albums.className='year-albums';
-
-    yd.albums.forEach((al)=>{
-      const albumEl=document.createElement('div');
-      albumEl.className='album';
-
-      // 앨범 카드 — 클릭 시 구글 사이트로 이동
-      const card=document.createElement('div');
-      card.className='album-card';
-      card.style.cssText=`
-        display:flex; align-items:center; gap:20px;
-        padding:20px 24px;
-        background:var(--paper);
-        border:1px solid var(--border);
-        cursor:pointer;
-        transition:all .25s;
-        position:relative;
-        overflow:hidden;
-      `;
-      card.addEventListener('mouseenter',()=>{
-        card.style.borderColor='var(--brown)';
-        card.style.transform='translateX(4px)';
-        card.style.boxShadow='3px 3px 0 var(--border2)';
-      });
-      card.addEventListener('mouseleave',()=>{
-        card.style.borderColor='var(--border)';
-        card.style.transform='translateX(0)';
-        card.style.boxShadow='none';
-      });
-      card.addEventListener('click',()=>{
-        window.open(al.url,'_blank');
-      });
-
-      card.innerHTML=`
-        <div style="font-size:2.2rem;flex-shrink:0">${al.emoji||'📷'}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:.95rem;font-weight:400;color:var(--text);letter-spacing:.01em">${al.title}</div>
-          <div style="font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px">${al.date}</div>
-        </div>
-        <div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);opacity:.7;flex-shrink:0;display:flex;align-items:center;gap:6px">
-          보러가기 <span style="font-size:.9rem">→</span>
-        </div>
-      `;
-
-      albumEl.appendChild(card);
-      albums.appendChild(albumEl);
-    });
-
-    sec.appendChild(sidebar);
-    sec.appendChild(albums);
+    sec.appendChild(grid);
     main.appendChild(sec);
   });
 
-  document.getElementById('footerCopy').textContent=new Date().getFullYear()+' · Family Archive';
-}
-
-// ── LIGHTBOX ──
-function openLb(idx){
-  rebuildFlat();
-  lbIdx=Math.min(idx,allPhotos.length-1);
-  renderLb();
-  document.getElementById('lightbox').classList.add('open');
-}
-function renderLb(){
-  const p=allPhotos[lbIdx];
-  const w=document.getElementById('lbImgWrap');
-  w.innerHTML=p.src
-    ?`<img class="lb-img" src="${p.src}" alt="${p.caption}">`
-    :`<div class="lb-ph"><span style="font-size:5rem">${p.emoji}</span><p>${p.caption}</p></div>`;
-  document.getElementById('lbCap').textContent=p.caption;
-  document.getElementById('lbMeta').textContent=`${p.date} · ${p.albumTitle}`;
-  document.getElementById('lbCtr').textContent=`${lbIdx+1} / ${allPhotos.length}`;
-}
-document.getElementById('lbClose').onclick=()=>document.getElementById('lightbox').classList.remove('open');
-document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))document.getElementById('lightbox').classList.remove('open');});
-document.getElementById('lbPrev').onclick=()=>{lbIdx=(lbIdx-1+allPhotos.length)%allPhotos.length;renderLb();};
-document.getElementById('lbNext').onclick=()=>{lbIdx=(lbIdx+1)%allPhotos.length;renderLb();};
-
-// ── SLIDESHOW ──
-let ssIdx=0,ssRunning=true,ssDur=4200,ssElapsed=0,ssTimer=null;
-document.getElementById('ssOpenBtn').onclick=openSS;
-function openSS(){
-  rebuildFlat();
-  if(!allPhotos.length) return;
-  ssIdx=0; ssRunning=true;
-  document.getElementById('ssOverlay').classList.add('open');
-  renderSlide(); startSS();
-}
-function renderSlide(){
-  const p=allPhotos[ssIdx];
-  const inner=document.getElementById('ssInner');
-  const frame=document.getElementById('ssFilmFrame');
-  frame.style.animation='none'; frame.offsetHeight; frame.style.animation='ssIn .55s cubic-bezier(.25,.46,.45,.94)';
-  inner.innerHTML=p.src
-    ?`<img class="ss-img" src="${p.src}" alt="${p.caption}">`
-    :`<div class="ss-ph"><span>${p.emoji}</span></div>`;
-  document.getElementById('ssBg').style.backgroundImage=p.src?`url('${p.src}')`:'none';
-  document.getElementById('ssCap').textContent=p.caption;
-  document.getElementById('ssSub').textContent=`${p.date} · ${p.albumTitle}`;
-  document.getElementById('ssCtr').textContent=`${ssIdx+1} / ${allPhotos.length}`;
-  document.getElementById('ssBar').style.width='0%';
-}
-function startSS(){
-  clearInterval(ssTimer); ssElapsed=0;
-  ssTimer=setInterval(()=>{
-    if(!ssRunning) return;
-    ssElapsed+=50;
-    document.getElementById('ssBar').style.width=Math.min(ssElapsed/ssDur*100,100)+'%';
-    if(ssElapsed>=ssDur){ssIdx=(ssIdx+1)%allPhotos.length;renderSlide();ssElapsed=0;}
-  },50);
-}
-document.getElementById('ssClose').onclick=()=>{clearInterval(ssTimer);document.getElementById('ssOverlay').classList.remove('open');};
-document.getElementById('ssPrev').onclick=()=>{ssIdx=(ssIdx-1+allPhotos.length)%allPhotos.length;renderSlide();startSS();};
-document.getElementById('ssNext').onclick=()=>{ssIdx=(ssIdx+1)%allPhotos.length;renderSlide();startSS();};
-document.getElementById('ssPause').onclick=function(){ssRunning=!ssRunning;this.textContent=ssRunning?'⏸':'▶';};
-
-// ── KEYBOARD ──
-document.addEventListener('keydown',e=>{
-  const lb=document.getElementById('lightbox').classList.contains('open');
-  const ss=document.getElementById('ssOverlay').classList.contains('open');
-  if(lb){if(e.key==='ArrowLeft')document.getElementById('lbPrev').click();if(e.key==='ArrowRight')document.getElementById('lbNext').click();if(e.key==='Escape')document.getElementById('lbClose').click();}
-  if(ss){if(e.key==='ArrowLeft')document.getElementById('ssPrev').click();if(e.key==='ArrowRight')document.getElementById('ssNext').click();if(e.key==='Escape')document.getElementById('ssClose').click();}
-});
-
-// ── INIT ──
-buildYearNav();
-buildContent();
-rebuildFlat();
+  document.getElementById('fc').textContent=new Date().getFullYear()+' · Family Archive';
+})();
 </script>
 </body>
 </html>
