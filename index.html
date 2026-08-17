@@ -8,16 +8,17 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#f0f2f4; --card:#fff; --line:#dfe3e7;
-  --text:#151a1f; --dim:#6b7885; --muted:#a3adb8;
-  --gold:#3d7a8c; --sage:#c17f4a;
+  --bg:#eef7f4; --card:#fff; --line:#d8e8e2;
+  --text:#14201c; --dim:#5f7a72; --muted:#9db5ad;
+  --gold:#2f8f7a; --sage:#e0a458;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;position:relative}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
-    radial-gradient(ellipse at 12% 5%, rgba(61,122,140,.08) 0%, transparent 55%),
-    radial-gradient(ellipse at 88% 40%, rgba(193,127,74,.055) 0%, transparent 52%)}
+    radial-gradient(ellipse at 10% 3%, rgba(120,210,185,.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 92% 35%, rgba(250,220,120,.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 45% 85%, rgba(160,225,205,.08) 0%, transparent 55%)}
 body>*{position:relative;z-index:1}
 
 /* ── HERO ── */
@@ -27,32 +28,34 @@ body>*{position:relative;z-index:1}
 .hslide.on{z-index:2}
 .hslide.on{opacity:1}
 .hero::after{content:'';position:absolute;inset:0;z-index:2;
-  background:linear-gradient(to right,rgba(10,20,28,.72) 0%,rgba(10,20,28,.42) 46%,rgba(10,20,28,.06) 76%,rgba(10,20,28,.2) 100%)}
+  background:linear-gradient(to right,rgba(8,26,22,.72) 0%,rgba(8,26,22,.4) 46%,rgba(8,26,22,.04) 76%,rgba(8,26,22,.18) 100%)}
 .hero-in{position:relative;z-index:4;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(28px,5vw,68px);max-width:640px}
-.eb{font-size:clamp(8px,1vw,9.5px);font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#7ec8dd;margin-bottom:18px}
+.eb{font-size:clamp(8px,1vw,9.5px);font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#7fe3c4;margin-bottom:18px}
 .h1{font-family:'Libre Baskerville',serif;font-size:clamp(1.9rem,4.4vw,3.2rem);font-weight:400;line-height:1.08;color:#fff;letter-spacing:-.025em}
-.h1 em{font-style:italic;color:#7ec8dd}
-.de{font-size:clamp(8px,1vw,9.5px);color:#e8b989;margin-top:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500}
+.h1 em{font-style:italic;color:#7fe3c4}
+.de{font-size:clamp(8px,1vw,9.5px);color:#ffd97d;margin-top:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500}
 .nm{margin-top:22px;display:flex;flex-wrap:wrap;font-size:clamp(9px,1.1vw,10.5px);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78);font-weight:500}
 .nm span+span::before{content:'·';margin:0 9px;color:rgba(255,255,255,.3)}
 .rg{margin-top:20px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.13);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:9px 16px;border-radius:100px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.88);font-weight:500;width:fit-content}
-.rd{width:5px;height:5px;border-radius:50%;background:#7ec8dd}
+.rd{width:5px;height:5px;border-radius:50%;background:#7fe3c4}
 /* 히어로 도트 */
 .hdots{position:absolute;bottom:24px;left:clamp(28px,5vw,68px);z-index:5;display:flex;gap:5px}
 .hd{width:16px;height:2px;background:rgba(255,255,255,.3);border-radius:2px;transition:all .3s;cursor:pointer}
 .hd.on{background:#fff;width:28px}
 
 /* 우측 필름 스트립 */
-.strip{position:absolute;right:0;top:0;bottom:0;width:clamp(120px,17vw,210px);background:#12191f;z-index:3;display:flex;overflow:hidden}
+.strip{position:absolute;right:0;top:0;bottom:0;width:clamp(120px,17vw,210px);background:#10201b;z-index:3;display:flex;overflow:hidden}
 .sh{position:absolute;top:0;bottom:0;width:15px;display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:8px 0;z-index:2}
 .sh.l{left:0}.sh.r{right:0}
 .sf{width:8px;height:6px;border-radius:1px;background:#e8e3d8;opacity:.22;flex-shrink:0}
 .sframes{margin:0 15px;flex:1;display:flex;flex-direction:column;gap:2px}
-.sfr{flex:1;min-height:0;background-size:cover;background-position:center;border:1px solid rgba(255,255,255,.05);filter:brightness(.92) saturate(1.02)}
+.sfr{flex:1;min-height:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.05)}
+.sfr .im{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease;filter:brightness(.95) saturate(1.05)}
+.sfr .im.on{opacity:1}
 @media(max-width:760px){.strip{display:none}.hero::after{background:linear-gradient(to top,rgba(15,18,20,.75),rgba(15,18,20,.3))}}
 
 /* ── NAV ── */
-.nav{position:sticky;top:0;z-index:100;background:rgba(240,242,244,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:0 clamp(18px,5vw,64px);display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
+.nav{position:sticky;top:0;z-index:100;background:rgba(238,247,244,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:0 clamp(18px,5vw,64px);display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .ag{font-size:10.5px;font-weight:600;letter-spacing:.12em;color:var(--gold);padding:16px 18px 16px 0;margin-right:8px;border-right:1px solid var(--line);white-space:nowrap;text-decoration:none;flex-shrink:0}
 .tb{background:none;border:none;font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;padding:16px 13px;color:var(--muted);position:relative;white-space:nowrap;cursor:pointer;flex-shrink:0}
@@ -82,7 +85,7 @@ body>*{position:relative;z-index:1}
 .alb.one{aspect-ratio:16/10;min-height:0}
 .alb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
 .alb:hover img{transform:scale(1.05)}
-.ovl{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(8,16,24,.78) 0%,rgba(8,16,24,.2) 50%,transparent 72%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,2vw,20px)}
+.ovl{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(6,22,18,.76) 0%,rgba(6,22,18,.18) 50%,transparent 72%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,2vw,20px)}
 .ct{font-size:clamp(13px,1.6vw,15.5px);font-weight:500;color:#fff;letter-spacing:-.01em;line-height:1.3}
 .ct.s{font-size:clamp(12px,1.4vw,13.5px)}
 .cd{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:5px;font-weight:500}
@@ -274,18 +277,40 @@ const INTERVAL = 3000;
   },INTERVAL);
 })();
 
-// ── 필름 스트립 ──
+// ── 필름 스트립 (자동 전환) ──
 (function(){
   const l=document.getElementById('shl'), r=document.getElementById('shr');
   for(let i=0;i<18;i++){
     [l,r].forEach(el=>{const d=document.createElement('div');d.className='sf';el.appendChild(d);});
   }
   const f=document.getElementById('sframes');
-  STRIP_PHOTOS.forEach(n=>{
-    const d=document.createElement('div');
-    d.className='sfr';
-    d.style.backgroundImage=`url('${n}.jpg')`;
-    f.appendChild(d);
+  const SLOTS=6;
+  const frames=[];
+  for(let i=0;i<SLOTS;i++){
+    const fr=document.createElement('div');
+    fr.className='sfr';
+    const a=document.createElement('div'); a.className='im on';
+    const b=document.createElement('div'); b.className='im';
+    fr.appendChild(a); fr.appendChild(b);
+    f.appendChild(fr);
+    frames.push({el:fr,a,b,cur:0,idx:i*10+1});
+  }
+  // 초기 이미지
+  frames.forEach(fo=>{ fo.a.style.backgroundImage=`url('${fo.idx}.jpg')`; });
+
+  // 슬롯마다 시차를 두고 순환
+  frames.forEach((fo,i)=>{
+    setTimeout(()=>{
+      setInterval(()=>{
+        fo.idx = fo.idx % HERO_TOTAL + 1;
+        const next = fo.cur===0 ? fo.b : fo.a;
+        const prev = fo.cur===0 ? fo.a : fo.b;
+        next.style.backgroundImage=`url('${fo.idx}.jpg')`;
+        next.classList.add('on');
+        prev.classList.remove('on');
+        fo.cur = 1-fo.cur;
+      }, 4500);
+    }, i*750);
   });
 })();
 
