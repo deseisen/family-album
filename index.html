@@ -171,11 +171,11 @@ body > * { position:relative; z-index:1; }
 /* 필름 전체 컨테이너 */
 .hero-film {
   background: #1a1610;
-  padding: 10px 22px;
+  padding: 22px 22px;
   position:relative;
   box-shadow: 4px 6px 24px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
 }
-/* 필름 구멍 열 */
+/* 필름 구멍 열 — 좌우 */
 .hero-film-holes {
   position:absolute;
   top:0; bottom:0;
@@ -188,8 +188,29 @@ body > * { position:relative; z-index:1; }
 }
 .hero-film-holes.left  { left:0; }
 .hero-film-holes.right { right:0; }
+/* 필름 구멍 열 — 상하 */
+.hero-film-holes-top,
+.hero-film-holes-bottom {
+  position:absolute;
+  left:22px; right:22px;
+  height:22px;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-around;
+  padding:0 8px;
+}
+.hero-film-holes-top    { top:0; }
+.hero-film-holes-bottom { bottom:0; }
 .fhole {
   width:14px; height:10px;
+  border-radius:2px;
+  background: #f4f0e8;
+  opacity:.15;
+  flex-shrink:0;
+}
+.fhole-h {
+  width:10px; height:14px;
   border-radius:2px;
   background: #f4f0e8;
   opacity:.15;
@@ -765,6 +786,8 @@ body > * { position:relative; z-index:1; }
     <div class="hero-film">
       <div class="hero-film-holes left" id="heroHolesL"></div>
       <div class="hero-film-holes right" id="heroHolesR"></div>
+      <div class="hero-film-holes-top" id="heroHolesT"></div>
+      <div class="hero-film-holes-bottom" id="heroHolesB"></div>
       <div class="hero-photo-slot" id="heroPhotoSlot">
         <!-- 슬라이드 이미지들 — src에 사진 경로를 넣어주세요 -->
         <!-- 예: <img class="hero-photo-slide" src="photos/family1.jpg" alt=""> -->
@@ -968,8 +991,15 @@ function makeHoles(container, count=6) {
 (function(){
   const l=document.getElementById('heroHolesL');
   const r=document.getElementById('heroHolesR');
+  const t=document.getElementById('heroHolesT');
+  const b=document.getElementById('heroHolesB');
+  // 좌우 구멍
   for(let i=0;i<8;i++){
     [l,r].forEach(el=>{const h=document.createElement('div');h.className='fhole';el.appendChild(h);});
+  }
+  // 상하 구멍
+  for(let i=0;i<12;i++){
+    [t,b].forEach(el=>{const h=document.createElement('div');h.className='fhole-h';el.appendChild(h);});
   }
 })();
 
