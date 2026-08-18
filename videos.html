@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진 영상 — 박지형 · 박주형 · 채유리 · 박철의</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fff; --card:#fff; --line:#b8ddd0;
+  --text:#0f1f1a; --dim:#4a6b60; --muted:#8aa89d;
+  --gold:#2f8f7a; --sage:#e0a458;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 10% 3%, rgba(90,200,170,.22) 0%, transparent 58%),
+    radial-gradient(ellipse at 92% 32%, rgba(250,215,110,.16) 0%, transparent 52%),
+    radial-gradient(ellipse at 45% 88%, rgba(120,215,190,.14) 0%, transparent 58%)}
+body>*{position:relative;z-index:1}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(220,240,233,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);padding:0 clamp(18px,5vw,64px);display:flex;align-items:center;gap:4px}
+.back{font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--dim);
+  text-decoration:none;padding:16px 13px 16px 0;display:flex;align-items:center;gap:6px}
+.back svg{width:14px;height:14px}
+.ag{font-family:'Libre Baskerville',serif;font-style:italic;font-size:14px;color:var(--text);text-decoration:none;
+  padding:16px 18px;border-right:1px solid var(--line);margin-right:4px}
+
+/* ── HEADER ── */
+.ph{padding:clamp(40px,7vw,64px) clamp(18px,5vw,64px) clamp(24px,4vw,36px)}
+.eb{font-size:9.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.h1{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:400;letter-spacing:-.02em;color:var(--text)}
+.h1 em{font-style:italic;color:var(--gold)}
+.sub{margin-top:10px;font-size:13px;color:var(--muted)}
+
+/* ── GRID ── */
+.grid{padding:0 clamp(18px,5vw,64px) 80px;max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:clamp(18px,2.5vw,28px)}
+.vcard{display:block;text-decoration:none;color:inherit;border-radius:16px;overflow:hidden;
+  background:var(--card);border:1px solid var(--line);transition:transform .25s ease, box-shadow .25s ease}
+.vcard:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(15,31,26,.12)}
+.vthumb{position:relative;aspect-ratio:16/9;background:#0d1a16;overflow:hidden}
+.vthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.vcard:hover .vthumb img{transform:scale(1.05)}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top,rgba(8,26,22,.55) 0%,rgba(8,26,22,0) 45%)}
+.vplay svg{width:52px;height:52px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));transition:transform .25s ease}
+.vcard:hover .vplay svg{transform:scale(1.1)}
+.vinfo{padding:16px 18px 20px}
+.vtag{font-size:8.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+.vtitle{margin-top:8px;font-family:'Libre Baskerville',serif;font-size:16px;color:var(--text);line-height:1.35}
+.vdate{margin-top:8px;font-size:10.5px;letter-spacing:.08em;color:var(--muted)}
+
+.empty{padding:60px clamp(18px,5vw,64px);text-align:center;color:var(--muted);font-size:13px;display:none}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="ag" href="https://sites.google.com/allesgute.co.kr/year/%ED%99%88" target="_blank" rel="noopener">Alles Gute</a>
+  <a class="back" href="https://deseisen.github.io/family-album/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    앨범으로 돌아가기
+  </a>
+</nav>
+
+<div class="ph">
+  <div class="eb">Family Archive · Motion</div>
+  <h1 class="h1">사진 <em>영상</em></h1>
+  <div class="sub">우리 가족의 순간을 담은 영상 모음</div>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty">아직 등록된 영상이 없어요.</div>
+
+<script>
+/* ── 영상 목록: 여기에 항목만 추가하면 자동으로 카드가 생성돼요 ──
+   id    : 유튜브 영상 ID (주소 youtu.be/뒤에 오는 부분, 또는 watch?v= 뒤 부분)
+   title : 카드에 표시될 제목
+   tag   : 작은 라벨 (연도, 여행지 등 자유롭게)
+   date  : 하단에 표시될 날짜/설명 텍스트
+*/
+const videos = [
+  { id:"P7FBh-QNDYk", title:"2024년 여름 제주도 가족 여행 영상2", tag:"Travel", date:"2024년 · 14:27" },
+  { id:"H8vsDxOELXI", title:"2024년 여름 제주도 가족 여행 영상1", tag:"Travel", date:"2024년 · 11:34" },
+  { id:"ikf4YkEJghg", title:"2024년 신년 가족 여행 덕산 서울 Go! Go! 사진 영상", tag:"Travel", date:"2024년 · 11:19" },
+  { id:"muzhxDrq158", title:"2학년 7반 박주형 농구 자랑", tag:"Kids", date:"2:22" },
+  { id:"GVZCs8j29-A", title:"2023년 신년 가족여행 Hi Seoul 사진 영상", tag:"Travel", date:"2023년 · 10:12" },
+  { id:"w9VasQxsRA0", title:"2022년 여름 가족 여행 사진 영상 4탄", tag:"Travel", date:"2022년 · 9:42" },
+  { id:"tkJOHVw2BS4", title:"2022년 여름 가족 여행 사진 영상 3탄", tag:"Travel", date:"2022년 · 9:49" },
+  { id:"u1GtLcTidY8", title:"2022년 여름 가족 여행 사진 영상 2탄", tag:"Travel", date:"2022년 · 9:36" },
+  { id:"Juz0ohbnhtw", title:"2022년 여름 가족 여행 사진 영상 1탄", tag:"Travel", date:"2022년 · 9:41" },
+  { id:"FxScIKowoUk", title:"여름냇가박지형", tag:"Kids", date:"1:51" },
+  { id:"hh1Lzj7FpfI", title:"그땐 몰랐던 일들 지형주형 cover", tag:"Cover", date:"3:15" },
+];
+
+const grid = document.getElementById('grid');
+const empty = document.getElementById('empty');
+
+if (videos.length === 0) {
+  empty.style.display = 'block';
+} else {
+  videos.forEach(v => {
+    const a = document.createElement('a');
+    a.className = 'vcard';
+    a.href = `https://youtu.be/${v.id}`;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `
+      <div class="vthumb">
+        <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy">
+        <div class="vplay">
+          <svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="11" fill="rgba(13,26,22,.55)"/><path d="M10 8.5l6 3.5-6 3.5z" fill="#fff"/></svg>
+        </div>
+      </div>
+      <div class="vinfo">
+        <div class="vtag">${v.tag || ''}</div>
+        <div class="vtitle">${v.title}</div>
+        <div class="vdate">${v.date || ''}</div>
+      </div>`;
+    grid.appendChild(a);
+  });
+}
+</script>
+
+</body>
+</html>
