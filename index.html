@@ -298,12 +298,29 @@ const data = [
 ];
 
 // 히어로 슬라이드쇼용 사진 (전체 62장 순환)
-const HERO_TOTAL = 72;
+const HERO_TOTAL = 76;
+
+// ── 사진 확장자 자동 감지 (.jpg / .JPG 둘 다 지원) ──
+const PHOTO_EXT = {};
+function testExt(n){
+  return new Promise(resolve=>{
+    const img = new Image();
+    img.onload = ()=>{ PHOTO_EXT[n]='jpg'; resolve(); };
+    img.onerror = ()=>{
+      const img2 = new Image();
+      img2.onload = ()=>{ PHOTO_EXT[n]='JPG'; resolve(); };
+      img2.onerror = ()=>{ PHOTO_EXT[n]='jpg'; resolve(); };
+      img2.src = n+'.JPG';
+    };
+    img.src = n+'.jpg';
+  });
+}
+function px(n){ return `${n}.${PHOTO_EXT[n]||'jpg'}`; }
 const STRIP_PHOTOS = [34,49,29,53,44,23];
 const INTERVAL = 3000;
 
 // ── 히어로 슬라이드쇼 ──
-(function(){
+function initHero(){
   const wrap = document.getElementById('hslides');
   const dots = document.getElementById('hdots');
   const imgs = [];
@@ -311,7 +328,7 @@ const INTERVAL = 3000;
   for(let i=1;i<=HERO_TOTAL;i++){
     const d=document.createElement('div');
     d.className='hslide'+(i===1?' on':'');
-    d.style.backgroundImage=`url('${i}.jpg')`;
+    d.style.backgroundImage=`url('${px(i)}')`;
     wrap.appendChild(d);
     imgs.push(d);
   }
@@ -330,10 +347,10 @@ const INTERVAL = 3000;
     const di=Math.floor(cur/HERO_TOTAL*DOTS);
     [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===di));
   },INTERVAL);
-})();
+}
 
 // ── 필름 스트립 (자동 전환) ──
-(function(){
+function initStrip(){
   const l=document.getElementById('shl'), r=document.getElementById('shr');
   const el=document.getElementById('edgeL');
   for(let i=0;i<18;i++){
@@ -359,7 +376,7 @@ const INTERVAL = 3000;
     frames.push({el:fr,a,b,cur:0,idx:i*10+1});
   }
   // 초기 이미지
-  frames.forEach(fo=>{ fo.a.style.backgroundImage=`url('${fo.idx}.jpg')`; });
+  frames.forEach(fo=>{ fo.a.style.backgroundImage=`url('${px(fo.idx)}')`; });
 
   // 슬롯마다 시차를 두고 순환
   frames.forEach((fo,i)=>{
@@ -368,17 +385,17 @@ const INTERVAL = 3000;
         fo.idx = fo.idx % HERO_TOTAL + 1;
         const next = fo.cur===0 ? fo.b : fo.a;
         const prev = fo.cur===0 ? fo.a : fo.b;
-        next.style.backgroundImage=`url('${fo.idx}.jpg')`;
+        next.style.backgroundImage=`url('${px(fo.idx)}')`;
         next.classList.add('on');
         prev.classList.remove('on');
         fo.cur = 1-fo.cur;
       }, 3000);
     }, i*500);
   });
-})();
+}
 
 // ── NAV ──
-(function(){
+function initNav(){
   const nav=document.getElementById('nav');
   const ag=document.createElement('a');
   ag.className='ag';
@@ -416,10 +433,10 @@ const INTERVAL = 3000;
       if(t) window.scrollTo({top:t.getBoundingClientRect().top+scrollY-70,behavior:'smooth'});
     }
   });
-})();
+}
 
 // ── BODY ──
-(function(){
+function initBody(){
   const main=document.getElementById('main');
 
   data.forEach(yd=>{
@@ -442,7 +459,7 @@ const INTERVAL = 3000;
       a.className='alb '+cls;
       a.href=al.url; a.target='_blank';
       a.innerHTML=`
-        <img src="${al.cover}.jpg" alt="${al.title}" loading="lazy">
+        <img src="${px(al.cover)}" alt="${al.title}" loading="lazy">
         ${al.tag?`<span class="bdg">${al.tag}</span>`:''}
         <span class="go">→</span>
         <div class="ovl">
@@ -469,6 +486,17 @@ const INTERVAL = 3000;
   });
 
   document.getElementById('fc').textContent=new Date().getFullYear()+' · Family Archive';
+}
+
+// ── 부트스트랩: 확장자 먼저 전부 확인한 뒤 화면 렌더링 ──
+(async function(){
+  const nums = [];
+  for(let i=1;i<=HERO_TOTAL;i++) nums.push(i);
+  await Promise.all(nums.map(testExt));
+  initHero();
+  initStrip();
+  initNav();
+  initBody();
 })();
 </script>
 </body>
