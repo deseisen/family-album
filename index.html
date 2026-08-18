@@ -54,6 +54,13 @@ body>*{position:relative;z-index:1}
 .sfr .im.on{opacity:1}
 @media(max-width:760px){.strip{display:none}.hero::after{background:linear-gradient(to top,rgba(15,18,20,.75),rgba(15,18,20,.3))}}
 
+/* 좌우 고정 필름 여백 */
+.filmedge{position:fixed;top:0;bottom:0;width:20px;background:#10201b;z-index:10;display:none;opacity:.9}
+.filmedge::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:9px;transform:translateX(-50%);
+  background-image:repeating-linear-gradient(to bottom,#f0ebe0 0 7px,transparent 7px 20px);opacity:.5}
+.filmedge.l{left:0}.filmedge.r{right:0}
+@media(min-width:1180px){.filmedge{display:block}}
+
 /* ── NAV ── */
 .nav{position:sticky;top:0;z-index:100;background:rgba(220,240,233,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:0 clamp(18px,5vw,64px);display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
@@ -65,8 +72,12 @@ body>*{position:relative;z-index:1}
 
 /* ── BODY ── */
 .body{padding:clamp(28px,5vw,44px) clamp(18px,5vw,64px) 64px;max-width:1280px;margin:0 auto}
-.ysec{margin-bottom:clamp(30px,5vw,46px)}
+.ysec{margin-bottom:clamp(30px,5vw,46px);border-radius:20px;padding:clamp(18px,3vw,28px)}
 .ysec.hide{display:none}
+.ysec:nth-of-type(4n+1){background:#e8f5f0}
+.ysec:nth-of-type(4n+2){background:#faf1e4}
+.ysec:nth-of-type(4n+3){background:#f9edf0}
+.ysec:nth-of-type(4n+4){background:#eef1f7}
 .yhd{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
 .yn{font-family:'Libre Baskerville',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--text);letter-spacing:-.02em}
 .ys{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
@@ -107,6 +118,9 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,64px);displa
 </style>
 </head>
 <body>
+
+<div class="filmedge l"></div>
+<div class="filmedge r"></div>
 
 <!-- HERO -->
 <section class="hero">
