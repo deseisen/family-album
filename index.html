@@ -22,7 +22,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 body>*{position:relative;z-index:1}
 
 /* ── HERO ── */
-.hero{position:relative;aspect-ratio:16/9;max-height:600px;min-height:360px;overflow:hidden;background:#0d1a16}
+.hero{position:relative;width:100%;height:clamp(360px,54vw,600px);overflow:hidden;background:#0d1a16}
 .hero-slides{position:absolute;inset:0}
 .hslide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;background-size:cover;background-position:center;z-index:1}
 .hslide.on{z-index:2}
@@ -143,35 +143,35 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,64px);displa
 // ═══════════════════════════════════════════════
 const data = [
   { year:2025, albums:[
-    { title:"오키나와 · 서울 여행", date:"2025년", tag:"Travel", cover:34,
+    { title:"오키나와 · 서울 여행", date:"2025년", tag:"Travel", cover:42,
       url:"https://sites.google.com/allesgute.co.kr/2025-okinawa-seoul/%ED%99%88" },
-    { title:"필리핀 보홀 여행", date:"2025년", tag:"Travel", cover:49,
+    { title:"필리핀 보홀 여행", date:"2025년", tag:"Travel", cover:50,
       url:"https://sites.google.com/allesgute.co.kr/2025-photo-story/%ED%99%88" },
-    { title:"일상", date:"2025년", tag:"Daily", cover:55,
+    { title:"일상", date:"2025년", tag:"Daily", cover:54,
       url:"https://sites.google.com/allesgute.co.kr/2025-photo-story/%ED%99%88" },
   ]},
   { year:2024, albums:[
-    { title:"지주 가족 이야기", date:"2024년", tag:"Family", cover:53,
+    { title:"지주 가족 이야기", date:"2024년", tag:"Family", cover:34,
       url:"https://sites.google.com/allesgute.co.kr/2024jijufamilystory/%ED%99%88" },
-    { title:"포토스토리", date:"2024년", tag:"Story", cover:29,
+    { title:"포토스토리", date:"2024년", tag:"Story", cover:37,
       url:"https://sites.google.com/allesgute.co.kr/2024photostory/%ED%99%88" },
     { title:"일상", date:"2024년", tag:"Daily", cover:32,
       url:"https://sites.google.com/allesgute.co.kr/2024-photo-story/%ED%99%88" },
   ]},
   { year:2023, albums:[
-    { title:"서울 · 덕산 여행", date:"2023년", tag:"Travel", cover:23,
+    { title:"서울 · 덕산 여행", date:"2023년", tag:"Travel", cover:25,
       url:"https://sites.google.com/allesgute.co.kr/2023-seoul-deoksan-traveling/%ED%99%88" },
     { title:"일상", date:"2023년", tag:"Daily", cover:30,
       url:"https://sites.google.com/allesgute.co.kr/2023photostory/%ED%99%88" },
   ]},
   { year:2022, albums:[
-    { title:"여름 제주도 여행", date:"2022년 여름", tag:"Travel", cover:44,
+    { title:"여름 제주도 여행", date:"2022년 여름", tag:"Travel", cover:23,
       url:"https://sites.google.com/allesgute.co.kr/2022-summer-jeju-traveling/%ED%99%88" },
     { title:"일상", date:"2022년", tag:"Daily", cover:22,
       url:"https://sites.google.com/allesgute.co.kr/2022photpstory/%ED%99%88" },
   ]},
   { year:2021, albums:[
-    { title:"일상", date:"2021년", tag:"Daily", cover:21,
+    { title:"일상", date:"2021년", tag:"Daily", cover:18,
       url:"https://sites.google.com/allesgute.co.kr/2021-photo-story/%ED%99%88" },
   ]},
   { year:2020, albums:[
@@ -181,37 +181,37 @@ const data = [
       url:"https://sites.google.com/allesgute.co.kr/2020photostory/%ED%99%88" },
   ]},
   { year:2019, albums:[
-    { title:"필리핀 세부 여행", date:"2019년", tag:"Travel", cover:15,
+    { title:"필리핀 세부 여행", date:"2019년", tag:"Travel", cover:11,
       url:"https://sites.google.com/allesgute.co.kr/2019photostory-cebu-traveling/%ED%99%88" },
-    { title:"일상", date:"2019년", tag:"Daily", cover:16,
+    { title:"일상", date:"2019년", tag:"Daily", cover:10,
       url:"https://sites.google.com/allesgute.co.kr/2019-photo-story/%ED%99%88" },
   ]},
   { year:2018, albums:[
-    { title:"베트남 다낭 여행", date:"2018년", tag:"Travel", cover:9,
+    { title:"베트남 다낭 여행", date:"2018년", tag:"Travel", cover:5,
       url:"https://sites.google.com/allesgute.co.kr/2018photostory-danang/%ED%99%88" },
   ]},
   { year:2017, albums:[
-    { title:"일상", date:"2017년", tag:"Daily", cover:6,
+    { title:"일상", date:"2017년", tag:"Daily", cover:4,
       url:"https://sites.google.com/allesgute.co.kr/2017photostory/%ED%99%88" },
   ]},
   { year:2016, albums:[
-    { title:"일상", date:"2016년", tag:"Daily", cover:8,
+    { title:"일상", date:"2016년", tag:"Daily", cover:3,
       url:"https://sites.google.com/allesgute.co.kr/2016-photo-story/%ED%99%88" },
   ]},
   { year:2015, albums:[
-    { title:"제주도 여행", date:"2015년", tag:"Travel", cover:5,
+    { title:"제주도 여행", date:"2015년", tag:"Travel", cover:6,
       url:"https://sites.google.com/allesgute.co.kr/2015-photo-story-jejutraveling/%ED%99%88" },
     { title:"군산 · 전주 여행", date:"2015년", tag:"Travel", cover:12,
       url:"https://sites.google.com/allesgute.co.kr/2015photostory-gunsan-jeonju/%ED%99%88" },
-    { title:"일상", date:"2015년", tag:"Daily", cover:11,
+    { title:"일상", date:"2015년", tag:"Daily", cover:4,
       url:"https://sites.google.com/allesgute.co.kr/2015-photo-story/%ED%99%88" },
   ]},
   { year:2014, albums:[
-    { title:"일상", date:"2014년", tag:"Daily", cover:4,
+    { title:"일상", date:"2014년", tag:"Daily", cover:2,
       url:"https://sites.google.com/allesgute.co.kr/2014-photo-story/%ED%99%88" },
   ]},
   { year:2013, albums:[
-    { title:"일상", date:"2013년", tag:"Daily", cover:3,
+    { title:"일상", date:"2013년", tag:"Daily", cover:1,
       url:"https://sites.google.com/allesgute.co.kr/2013-photo-story/%ED%99%88" },
   ]},
   { year:2012, albums:[
@@ -233,7 +233,7 @@ const data = [
       url:"https://sites.google.com/allesgute.co.kr/2009-photo-story-wedding/%ED%99%88" },
     { title:"신혼여행", date:"2009년", tag:"Travel", cover:3,
       url:"https://sites.google.com/allesgute.co.kr/2009-photo-story-honeymoon/%ED%99%88" },
-    { title:"일상", date:"2009년", tag:"Daily", cover:4,
+    { title:"일상", date:"2009년", tag:"Daily", cover:5,
       url:"https://sites.google.com/allesgute.co.kr/2009-photo-story/%ED%99%88" },
   ]},
   { year:2007, albums:[
@@ -244,7 +244,7 @@ const data = [
 
 // 히어로 슬라이드쇼용 사진 (전체 62장 순환)
 const HERO_TOTAL = 62;
-const STRIP_PHOTOS = [34,49,29,53,44,23];
+const STRIP_PHOTOS = [42,50,29,54,36,25];
 const INTERVAL = 3000;
 
 // ── 히어로 슬라이드쇼 ──
