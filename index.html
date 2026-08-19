@@ -26,9 +26,10 @@ body>*{position:relative;z-index:1}
 /* ── HERO ── */
 .hero{position:relative;width:100%;height:clamp(420px,58vw,680px);overflow:hidden;background:#0d1a16}
 .hero-slides{position:absolute;inset:0}
-.hslide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;background-size:cover;background-position:center 30%;z-index:1}
+.hslide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;background-size:cover;background-position:center 30%;z-index:1;transform:scale(1.1)}
 .hslide.on{z-index:2}
-.hslide.on{opacity:1}
+.hslide.on{opacity:1;animation:heroZoom 7s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 .hero::after{content:'';position:absolute;inset:0;z-index:2;
   background:linear-gradient(to right,rgba(8,26,22,.72) 0%,rgba(8,26,22,.4) 46%,rgba(8,26,22,.04) 76%,rgba(8,26,22,.18) 100%)}
 .hero-in{position:relative;z-index:4;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(28px,5vw,68px);max-width:640px}
